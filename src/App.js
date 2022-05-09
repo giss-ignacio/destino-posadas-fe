@@ -9,7 +9,7 @@ import Hoteles from './pages/Hoteles';
 import Tareas from './pages/Tareas';
 
 import './App.css';
-import Viajeros from './pages/Metricas/Viajeros';
+import Total from './pages/Metricas/Total';
 import RRSS from './pages/Metricas/RRSS';
 import Transporte from './pages/Metricas/Transporte';
 import Gasto from './pages/Metricas/Gasto';
@@ -52,7 +52,7 @@ const App = () => {
               <Route path='/tareas' element={<Tareas />} />
               <Route path='/editor' element={<Editor />} />
 
-              <Route path='/viajeros' element={<Viajeros />} />
+              <Route path='/total' element={<Total />} />
               <Route path='/gasto' element={<Gasto />} />
               <Route path='/transporte' element={<Transporte />} />
               <Route path='/rrss' element={<RRSS />} />

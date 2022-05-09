@@ -6,8 +6,9 @@ import {
   Inject,
   Legend,
   Category,
-  StackingColumnSeries,
+  BarSeries,
   Tooltip,
+  DataLabel,
 } from '@syncfusion/ej2-react-charts';
 import { stackedChartData } from '../data/dummy';
 
@@ -27,8 +28,8 @@ const StackedChart = () => {
       }}
       primaryYAxis={{
         lineStyle: { width: 0 },
-        minimum: 100,
-        maximum: 400,
+        minimum: 0,
+        maximum: 200,
         interval: 100,
         majorTickLines: { width: 0 },
         majorGridLines: { width: 1 },
@@ -41,22 +42,14 @@ const StackedChart = () => {
       chartArea={{ border: { width: 0 } }}
       tooltip={{ enable: true }}
     >
-      <Inject services={[StackingColumnSeries, Category, Legend, Tooltip]} />
+      <Inject services={[BarSeries, Legend, Tooltip, DataLabel, Category]} />
       <SeriesCollectionDirective>
         <SeriesDirective
           dataSource={stackedChartData[0]}
           xName='x'
           yName='y'
-          name='Budget'
-          type='StackingColumn'
-          style={{ background: 'blue' }}
-        ></SeriesDirective>
-        <SeriesDirective
-          dataSource={stackedChartData[1]}
-          xName='x'
-          yName='y'
-          name='Expense'
-          type='StackingColumn'
+          name='Destinos turísticos'
+          type='Bar'
         ></SeriesDirective>
       </SeriesCollectionDirective>
     </ChartComponent>

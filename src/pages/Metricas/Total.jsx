@@ -11,7 +11,12 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { lineChartData } from '../../data/dummy';
 
+
 const Viajeros = () => {
+  state = {
+    persons: []
+  }
+
   return (
     <div className='md:m-10 m-4 md:mt-40 mt-20 '>
       <div className='w-full'>
