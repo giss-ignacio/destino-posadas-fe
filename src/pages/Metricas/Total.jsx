@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ChartComponent,
   SeriesCollectionDirective,
@@ -8,31 +8,46 @@ import {
   DateTime,
   Legend,
   Tooltip,
-} from '@syncfusion/ej2-react-charts';
-import { lineChartData } from '../../data/dummy';
+} from "@syncfusion/ej2-react-charts";
+import { lineChartData } from "../../data/dummy";
 
+//
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Viajeros = () => {
-  state = {
-    persons: []
-  }
+  const [hotel, setHotel] = useState([]);
+
+  useEffect(() => {
+    const endPoint = "http://localhost:3009/hoteles";
+
+    axios
+      .get(endPoint)
+      .then((res) => {
+        const apiData = res.data;
+        setHotel(apiData);
+      })
+      .catch((error) => {
+        alert(<h2>Hubo errores, intenta mas tarde!</h2>);
+      });
+  }, []);
 
   return (
-    <div className='md:m-10 m-4 md:mt-40 mt-20 '>
-      <div className='w-full'>
+    <div className="md:m-10 m-4 md:mt-40 mt-20 ">
+      <div className="w-full">
         <ChartComponent
-          id='charts'
-          style={{ textAlign: 'center' }}
+          id="charts"
+          style={{ textAlign: "center" }}
           primaryXAxis={{
-            valueType: 'DateTime',
-            labelFormat: 'y',
-            intervalType: 'Years',
-            edgeLabelPlacement: 'Shift',
+            valueType: "DateTime",
+            labelFormat: "y",
+            intervalType: "Years",
+            edgeLabelPlacement: "Shift",
             majorGridLines: { width: 0 },
           }}
           primaryYAxis={{
-            labelFormat: '{value}%',
-            rangePadding: 'None',
+            labelFormat: "{value}%",
+            rangePadding: "None",
             minimum: 0,
             maximum: 100,
             interval: 20,
@@ -42,27 +57,27 @@ const Viajeros = () => {
           }}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
-          title='Inflation - Consumer Price'
+          title="Promedio - Total"
         >
           <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
           <SeriesCollectionDirective>
             <SeriesDirective
               dataSource={lineChartData[0]}
-              xName='x'
-              yName='y'
-              name='Germany'
+              xName="x"
+              yName="y"
+              name="Germany"
               width={2}
               marker={{ visible: true, width: 10, height: 10 }}
-              type='Line'
+              type="Line"
             ></SeriesDirective>
             <SeriesDirective
               dataSource={lineChartData[1]}
-              xName='x'
-              yName='y'
-              name='England'
+              xName="x"
+              yName="y"
+              name="England"
               width={2}
               marker={{ visible: true, width: 10, height: 10 }}
-              type='Line'
+              type="Line"
             ></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>

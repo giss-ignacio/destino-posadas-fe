@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   AccumulationChartComponent,
   AccumulationSeriesCollectionDirective,
@@ -7,19 +7,19 @@ import {
   PieSeries,
   AccumulationDataLabel,
   Inject,
-} from '@syncfusion/ej2-react-charts';
-import { pieChartData } from '../../data/dummy';
+} from "@syncfusion/ej2-react-charts";
+import { pieChartData } from "../../data/dummy";
 
 const Gasto = () => {
   return (
-    <div className='md:m-10 m-4 md:mt-40 mt-20'>
-      <div className='w-full'>
+    <div className="md:m-10 m-4 md:mt-40 mt-20">
+      <div className="w-full">
         <AccumulationChartComponent
-          id='pie-chart'
-          title='Project Cost Breakdown'
+          id="pie-chart"
+          title="Project Cost Breakdown"
           legendSettings={{
             visible: true,
-            position: 'Top',
+            position: "Top",
           }}
           enableSmartLabels={true}
         >
@@ -28,24 +28,24 @@ const Gasto = () => {
           />
           <AccumulationSeriesCollectionDirective>
             <AccumulationSeriesDirective
-              name='Project'
+              name="Project"
               dataSource={pieChartData}
-              xName='x'
-              yName='y'
-              innerRadius='40%'
+              xName="x"
+              yName="y"
+              innerRadius="40%"
               startAngle={0}
               endAngle={360}
-              radius='70%'
+              radius="70%"
               explode={true}
-              explodeOffset='10%'
+              explodeOffset="10%"
               explodeIndex={3}
               dataLabel={{
                 visible: true,
-                name: 'text',
-                position: 'Inside',
+                name: "text",
+                position: "Inside",
                 font: {
-                  fontWeight: '600',
-                  color: '#ffffff',
+                  fontWeight: "600",
+                  color: "#ffffff",
                 },
               }}
             ></AccumulationSeriesDirective>
