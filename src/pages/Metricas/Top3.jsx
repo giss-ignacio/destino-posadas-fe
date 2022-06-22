@@ -12,24 +12,108 @@ import {
 } from "@syncfusion/ej2-react-charts";
 import { barChartData } from "../../data/dummy";
 // import { GetDataOrion } from "../../components/getDataOrion";
+import { useEffect, useState } from "react";
 
 const Top3 = () => {
-  var axios = require("axios");
+  //states
+  const [personalHotel1, setPersonalHotel1] = useState([]);
+  const [limpiezaHotel1, setLimpiezaHotel1] = useState([]);
+  const [precioCalidadHotel1, setPrecioCalidadHotel1] = useState([]);
+  const [ubicacionHotel1, setUbicacionHotel1] = useState([]);
+  const [wifiHotel1, setWifiHotel1] = useState([]);
+  const [totalHotel1, setTotalHotel1] = useState([]);
 
-  var config = {
-    method: "get",
-    url: "http://localhost:3009/api/fedata/hoteles",
+  const [personalHotel2, setPersonalHotel2] = useState([]);
+  const [limpiezaHotel2, setLimpiezaHotel2] = useState([]);
+  const [precioCalidadHotel2, setPrecioCalidadHotel2] = useState([]);
+  const [ubicacionHotel2, setUbicacionHotel2] = useState([]);
+  const [wifiHotel2, setWifiHotel2] = useState([]);
+  const [totalHotel2, setTotalHotel2] = useState([]);
+
+  const [personalHotel3, setPersonalHotel3] = useState([]);
+  const [limpiezaHotel3, setLimpiezaHotel3] = useState([]);
+  const [precioCalidadHotel3, setPrecioCalidadHotel3] = useState([]);
+  const [ubicacionHotel3, setUbicacionHotel3] = useState([]);
+  const [wifiHotel3, setWifiHotel3] = useState([]);
+  const [totalHotel3, setTotalHotel3] = useState([]);
+
+  useEffect(() => {
+    // const endPoint = "http://localhost:3009/api/fedata/hoteles";
+    obtenerDatos();
+  }, []);
+
+  const obtenerDatos = async () => {
+    const data = await fetch("http://localhost:3009/api/fedata/hoteles");
+    const data2 = await data.json();
+
+    let mostrar = data2[0];
+    // console.log(mostrar[0].Categoria.value);
+
+    //seteo
+    setPersonalHotel1(mostrar[0].Categoria.value);
+    setLimpiezaHotel1(10);
+    setPrecioCalidadHotel1(20);
+    setUbicacionHotel1(30);
+    setWifiHotel1(40);
+    setTotalHotel1(50);
+
+    setPersonalHotel2(20);
+    setLimpiezaHotel2(50);
+    setPrecioCalidadHotel2(80);
+    setUbicacionHotel2(30);
+    setWifiHotel2(40);
+    setTotalHotel2(50);
+
+    setPersonalHotel3(mostrar[0].Categoria.value);
+    setLimpiezaHotel3(10);
+    setPrecioCalidadHotel3(20);
+    setUbicacionHotel3(30);
+    setWifiHotel3(40);
+    setTotalHotel3(50);
   };
 
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      let dataMock = response.data;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
+  const barChartData2 = [
+    [
+      { x: "HOTEL 1: NOMBREHOTEL", y: personalHotel1 },
+      { x: "HOTEL 2: NOMBREHOTEL", y: personalHotel2 },
+      { x: "HOTEL 3: NOMBREHOTEL", y: personalHotel3 },
+    ],
+    [
+      { x: "HOTEL 1: NOMBREHOTEL", y: limpiezaHotel1 },
+      { x: "HOTEL 2: NOMBREHOTEL", y: limpiezaHotel2 },
+      { x: "HOTEL 3: NOMBREHOTEL", y: limpiezaHotel3 },
+    ],
+    [
+      { x: "HOTEL 1: NOMBREHOTEL", y: precioCalidadHotel1 },
+      { x: "HOTEL 2: NOMBREHOTEL", y: precioCalidadHotel2 },
+      { x: "HOTEL 3: NOMBREHOTEL", y: precioCalidadHotel3 },
+    ],
+    [
+      { x: "HOTEL 1: NOMBREHOTEL", y: ubicacionHotel1 },
+      { x: "HOTEL 2: NOMBREHOTEL", y: ubicacionHotel2 },
+      { x: "HOTEL 3: NOMBREHOTEL", y: ubicacionHotel3 },
+    ],
+    [
+      { x: "HOTEL 1: NOMBREHOTEL", y: wifiHotel1 },
+      { x: "HOTEL 2: NOMBREHOTEL", y: wifiHotel2 },
+      { x: "HOTEL 3: NOMBREHOTEL", y: wifiHotel3 },
+    ],
+    [
+      { x: "HOTEL 1: NOMBREHOTEL", y: totalHotel1 },
+      { x: "HOTEL 2: NOMBREHOTEL", y: totalHotel2 },
+      { x: "HOTEL 3: NOMBREHOTEL", y: totalHotel3 },
+    ],
+    // [
+    //   { x: "HOTEL 1: NOMBREHOTEL", y: 94 },
+    //   { x: "HOTEL 2: NOMBREHOTEL", y: 17 },
+    //   { x: "HOTEL 3: NOMBREHOTEL", y: 26 },
+    // ],
+    // [
+    //   { x: "HOTEL 1: NOMBREHOTEL", y: 94 },
+    //   { x: "HOTEL 2: NOMBREHOTEL", y: 17 },
+    //   { x: "HOTEL 3: NOMBREHOTEL", y: 26 },
+    // ],
+  ];
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20">
       <div className=" w-full">
@@ -56,7 +140,7 @@ const Top3 = () => {
           />
           <SeriesCollectionDirective>
             <SeriesDirective
-              dataSource={barChartData[0]}
+              dataSource={barChartData2[0]}
               xName="x"
               yName="y"
               name="Personal"
@@ -70,7 +154,7 @@ const Top3 = () => {
               }}
             ></SeriesDirective>
             <SeriesDirective
-              dataSource={barChartData[1]}
+              dataSource={barChartData2[1]}
               xName="x"
               yName="y"
               name="Limpieza"
@@ -84,7 +168,7 @@ const Top3 = () => {
               }}
             ></SeriesDirective>
             <SeriesDirective
-              dataSource={barChartData[2]}
+              dataSource={barChartData2[2]}
               xName="x"
               yName="y"
               name="Precio/Calidad"
@@ -99,7 +183,7 @@ const Top3 = () => {
             ></SeriesDirective>
 
             <SeriesDirective
-              dataSource={barChartData[3]}
+              dataSource={barChartData2[3]}
               xName="x"
               yName="y"
               name="Ubicación"
@@ -114,7 +198,7 @@ const Top3 = () => {
             ></SeriesDirective>
 
             <SeriesDirective
-              dataSource={barChartData[4]}
+              dataSource={barChartData2[4]}
               xName="x"
               yName="y"
               name="Wi-fi"
@@ -129,7 +213,7 @@ const Top3 = () => {
             ></SeriesDirective>
 
             <SeriesDirective
-              dataSource={barChartData[5]}
+              dataSource={barChartData2[5]}
               xName="x"
               yName="y"
               name="Total"

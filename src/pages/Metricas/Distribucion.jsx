@@ -39,7 +39,6 @@ const Distribucion = () => {
   };
 
   const pieChartData2 = [
-    // { x: "Hotel", y: hotel, text: "18%" },
     { x: "Hotel", y: hotel, text: hotel + "%" },
     { x: "Residencial", y: residencial, text: residencial + "%" },
     { x: "Hostería", y: hosteria, text: hosteria + "%" },
