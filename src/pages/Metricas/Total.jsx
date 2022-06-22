@@ -16,22 +16,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Viajeros = () => {
-  const [hotel, setHotel] = useState([]);
-
-  useEffect(() => {
-    const endPoint = "http://localhost:3009/hoteles";
-
-    axios
-      .get(endPoint)
-      .then((res) => {
-        const apiData = res.data;
-        setHotel(apiData);
-      })
-      .catch((error) => {
-        alert(<h2>Hubo errores, intenta mas tarde!</h2>);
-      });
-  }, []);
-
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20 ">
       <div className="w-full">
