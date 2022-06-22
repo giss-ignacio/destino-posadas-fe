@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ChartComponent,
   SeriesCollectionDirective,
@@ -10,32 +10,32 @@ import {
   Legend,
   RangeColorSettingsDirective,
   RangeColorSettingDirective,
-} from '@syncfusion/ej2-react-charts';
-import { colorMappingData } from '../../data/dummy';
+} from "@syncfusion/ej2-react-charts";
+import { colorMappingData } from "../../data/dummy";
 
-const Oficinas = () => {
+const Promedio = () => {
   return (
-    <div className='md:m-10 m-4 md:mt-40 mt-20'>
-      <div className='w-full'>
+    <div className="md:m-10 m-4 md:mt-40 mt-20">
+      <div className="w-full">
         <ChartComponent
-          id='charts'
-          style={{ textAlign: 'center' }}
+          id="charts"
+          style={{ textAlign: "center" }}
           primaryXAxis={{
-            valueType: 'Category',
+            valueType: "Category",
             majorGridLines: { width: 0 },
-            title: 'Months',
+            title: "",
           }}
           primaryYAxis={{
             lineStyle: { width: 0 },
             majorTickLines: { width: 0 },
             minorTickLines: { width: 0 },
-            labelFormat: '{value}°C',
-            title: 'Temperature',
+            labelFormat: "{value}", //aca saque el º
+            title: "Calificación",
           }}
-          title='USA CLIMATE - WEATHER BY MONTH'
+          title="PROMEDIO GENERAL"
           chartArea={{ border: { width: 0 } }}
           legendSettings={{
-            mode: 'Range',
+            mode: "Range",
           }}
           tooltip={{
             enable: true,
@@ -45,10 +45,10 @@ const Oficinas = () => {
           <SeriesCollectionDirective>
             <SeriesDirective
               dataSource={colorMappingData[0]}
-              name='USA'
-              xName='x'
-              yName='y'
-              type='Column'
+              name="USA"
+              xName="x"
+              yName="y"
+              type="Column"
               animation={{ enable: false }}
               cornerRadius={{
                 topLeft: 10,
@@ -58,22 +58,22 @@ const Oficinas = () => {
           </SeriesCollectionDirective>
           <RangeColorSettingsDirective>
             <RangeColorSettingDirective
-              label='1°C to 10°C'
+              label="1°C to 10°C"
               start={1}
               end={10}
-              colors={colorMappingData[1]}
+              colors={colorMappingData[4]}
             ></RangeColorSettingDirective>
             <RangeColorSettingDirective
-              label='11°C to 20°C'
+              label="11°C to 20°C"
               start={11}
               end={20}
-              colors={colorMappingData[2]}
+              colors={colorMappingData[4]}
             ></RangeColorSettingDirective>
             <RangeColorSettingDirective
-              label='21°C to 30°C'
+              label="21°C to 30°C"
               start={21}
               end={30}
-              colors={colorMappingData[3]}
+              colors={colorMappingData[4]}
             ></RangeColorSettingDirective>
           </RangeColorSettingsDirective>
         </ChartComponent>
@@ -81,4 +81,4 @@ const Oficinas = () => {
     </div>
   );
 };
-export default Oficinas;
+export default Promedio;

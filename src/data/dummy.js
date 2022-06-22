@@ -9,6 +9,8 @@ import {
   FaTrophy,
   FaThLarge,
   FaLayerGroup,
+  FaBalanceScale,
+  FaHotel,
 } from "react-icons/fa";
 import { FiEdit, FiActivity } from "react-icons/fi";
 import { BsKanban } from "react-icons/bs";
@@ -46,7 +48,7 @@ export const links = [
     links: [
       {
         name: "hoteles",
-        icon: <RiContactsLine />,
+        icon: <FaHotel />,
       },
     ],
   },
@@ -54,8 +56,8 @@ export const links = [
     title: "Metricas",
     links: [
       {
-        name: "oficinas",
-        icon: <FaInfo />,
+        name: "Promedio",
+        icon: <FaBalanceScale />,
       },
 
       {
@@ -64,21 +66,21 @@ export const links = [
       },
 
       {
-        name: "top3",
+        name: "top 3",
         icon: <FaTrophy />,
       },
       {
         name: "rrss",
         icon: <FaGlobeAmericas />,
       },
-      {
-        name: "reputacion",
-        icon: <FaThumbsUp />,
-      },
-      {
-        name: "total",
-        icon: <FaLayerGroup />,
-      },
+      // {
+      //   name: "reputacion",
+      //   icon: <FaThumbsUp />,
+      // },
+      // {
+      //   name: "total",
+      //   icon: <FaLayerGroup />,
+      // },
     ],
   },
 ];
@@ -288,18 +290,19 @@ export const barChartData = [
 
 export const colorMappingData = [
   [
-    { x: "Jan", y: 6.96 },
-    { x: "Feb", y: 8.9 },
-    { x: "Mar", y: 12 },
-    { x: "Apr", y: 17.5 },
-    { x: "May", y: 22.1 },
-    { x: "June", y: 25 },
-    { x: "July", y: 29.4 },
-    { x: "Aug", y: 29.6 },
-    { x: "Sep", y: 25.8 },
-    { x: "Oct", y: 21.1 },
-    { x: "Nov", y: 15.5 },
-    { x: "Dec", y: 9.9 },
+    //ajustes numeros de promedio(calificacion)
+    { x: "Personal", y: 90 },
+    { x: "Limpieza", y: 83 },
+    { x: "Precio/Calidad", y: 70 },
+    { x: "Ubicación", y: 60 },
+    { x: "Wi-fi", y: 50 },
+    { x: "Total", y: 75 },
+    // { x: "July", y: 29.4 },
+    // { x: "Aug", y: 29.6 },
+    // { x: "Sep", y: 25.8 },
+    // { x: "Oct", y: 21.1 },
+    // { x: "Nov", y: 15.5 },
+    // { x: "Dec", y: 9.9 },
   ],
   ["#FFFF99"],
   ["#FFA500"],
@@ -364,7 +367,7 @@ export const doughnutChartData = [
 
 export const stackedChartData = [
   [
-    { x: "Total", y: 30 },
+    { x: "Total", y: 5 },
     // { x: "Edificios con valor arquitectónico", y: 40 },
     { x: "Wi-fi", y: 60 },
     { x: "Ubicacion", y: 80 },
