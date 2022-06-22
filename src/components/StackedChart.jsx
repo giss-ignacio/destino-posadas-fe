@@ -50,7 +50,7 @@ const StackedChart = () => {
       { x: "Ubicacion", y: ubicacion },
       { x: "Precio/calidad", y: precioCalidad },
       { x: "Limpieza", y: limpieza },
-      { x: "Personal X", y: personal },
+      { x: "Personal", y: personal },
     ],
   ];
   return (

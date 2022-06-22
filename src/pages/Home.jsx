@@ -55,7 +55,7 @@ const Home = () => {
               <MdOutlineSupervisorAccount />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">9,354</span>
+              <span className="text-lg font-semibold">126</span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
             <p className="text-sm text-gray-500 mt-1">
@@ -67,7 +67,7 @@ const Home = () => {
               <BsBoxSeam />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">18</span>
+              <span className="text-lg font-semibold">30</span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
             <p className="text-sm text-gray-500 mt-1">
@@ -79,7 +79,7 @@ const Home = () => {
               <FiBarChart />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">8</span>
+              <span className="text-lg font-semibold">6</span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
             <p className="text-sm text-gray-500 mt-1">
