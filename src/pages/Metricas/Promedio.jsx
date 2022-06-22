@@ -17,8 +17,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Promedio = () => {
-  const [hoteles, setHoteles] = useState([]);
+  // const [hoteles, setHoteles] = useState([]);
   const [personal, setPersonal] = useState([]);
+  const [limpieza, setLimpieza] = useState([]);
+  const [precioCalidad, setPrecioCalidad] = useState([]);
+  const [ubicacion, setUbicacion] = useState([]);
+  const [wifi, setWifi] = useState([]);
+  const [total, setTotal] = useState([]);
 
   useEffect(() => {
     // const endPoint = "http://localhost:3009/api/fedata/hoteles";
@@ -32,21 +37,27 @@ const Promedio = () => {
     let mostrar = data2[0];
     console.log(mostrar);
 
-    setHoteles(mostrar);
+    // setHoteles(mostrar);
     console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO Funciona?");
     console.log(mostrar[0].Categoria.value);
     setPersonal(mostrar[0].Categoria.value);
+    setLimpieza(10);
+    setPersonal(20);
+    setPrecioCalidad(30);
+    setUbicacion(40);
+    setWifi(50);
+    setTotal(60);
   };
 
   const colorMappingData2 = [
     [
       //ajustes numeros de promedio(calificacion)
       { x: "Personal", y: personal },
-      { x: "Limpieza", y: 83 },
-      { x: "Precio/Calidad", y: 70 },
-      { x: "Ubicación", y: 60 },
-      { x: "Wi-fi", y: 50 },
-      { x: "Total", y: 75 },
+      { x: "Limpieza", y: limpieza },
+      { x: "Precio/Calidad", y: precioCalidad },
+      { x: "Ubicación", y: ubicacion },
+      { x: "Wi-fi", y: wifi },
+      { x: "Total", y: total },
       // { x: "July", y: 29.4 },
       // { x: "Aug", y: 29.6 },
       // { x: "Sep", y: 25.8 },
@@ -62,13 +73,6 @@ const Promedio = () => {
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20">
       <div className="w-full">
-        {/* <div>
-          <ul>
-            {hoteles.map((item) => (
-              <li key="item.id"> {item.Nombre.value}</li>
-            ))}
-          </ul>
-        </div> */}
         <ChartComponent
           id="charts"
           style={{ textAlign: "center" }}
@@ -85,7 +89,7 @@ const Promedio = () => {
             title: "Calificación",
           }}
           // title="PROMEDIO GENERAL"
-          title={"h"}
+          title={"Promedio General de Posadas"}
           chartArea={{ border: { width: 0 } }}
           legendSettings={{
             mode: "Range",
