@@ -11,8 +11,48 @@ import {
   DataLabel,
 } from "@syncfusion/ej2-react-charts";
 import { stackedChartData } from "../data/dummy";
+import { useEffect, useState } from "react";
 
 const StackedChart = () => {
+  // const [hoteles, setHoteles] = useState([]);
+  const [personal, setPersonal] = useState([]);
+  const [limpieza, setLimpieza] = useState([]);
+  const [precioCalidad, setPrecioCalidad] = useState([]);
+  const [ubicacion, setUbicacion] = useState([]);
+  const [wifi, setWifi] = useState([]);
+  const [total, setTotal] = useState([]);
+
+  useEffect(() => {
+    // const endPoint = "http://localhost:3009/api/fedata/hoteles";
+    obtenerDatos();
+  }, []);
+
+  const obtenerDatos = async () => {
+    const data = await fetch("http://localhost:3009/api/fedata/hoteles");
+    const data2 = await data.json();
+
+    let mostrar = data2[0];
+    console.log(mostrar);
+
+    setPersonal(mostrar[0].Categoria.value);
+    setLimpieza(10);
+    setPrecioCalidad(57);
+    setUbicacion(70);
+    setWifi(88);
+    setTotal(99);
+  };
+
+  const stackedChartData2 = [
+    [
+      { x: "Total", y: total },
+      // { x: "Edificios con valor arquitectónico", y: 40 },
+      { x: "Wi-fi", y: wifi },
+      { x: "Ubicacion", y: ubicacion },
+      { x: "Precio/calidad", y: precioCalidad },
+      { x: "Limpieza", y: limpieza },
+      { x: "Personal X", y: personal },
+    ],
+  ];
   return (
     <ChartComponent
       id="charts"
@@ -45,7 +85,7 @@ const StackedChart = () => {
       <Inject services={[BarSeries, Legend, Tooltip, DataLabel, Category]} />
       <SeriesCollectionDirective>
         <SeriesDirective
-          dataSource={stackedChartData[0]}
+          dataSource={stackedChartData2[0]}
           xName="x"
           yName="y"
           name="Promedio General de Posadas"

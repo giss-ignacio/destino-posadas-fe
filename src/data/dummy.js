@@ -373,7 +373,7 @@ export const stackedChartData = [
     { x: "Ubicacion", y: 80 },
     { x: "Precio/calidad", y: 111 },
     { x: "Limpieza", y: 127 },
-    { x: "Personal", y: 143 },
+    { x: "Personal", y: 10 },
   ],
 ];
 
