@@ -13,7 +13,7 @@ import {
 import { barChartData } from "../../data/dummy";
 // import { GetDataOrion } from "../../components/getDataOrion";
 
-const Promedio = () => {
+const Top3 = () => {
   var axios = require("axios");
 
   var config = {
@@ -49,7 +49,7 @@ const Promedio = () => {
           }}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
-          title="Promedios - Hoteles"
+          title="Top 3 - Mejores Hoteles"
         >
           <Inject
             services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}
@@ -59,7 +59,7 @@ const Promedio = () => {
               dataSource={barChartData[0]}
               xName="x"
               yName="y"
-              name="hotel_clean"
+              name="Personal"
               type="Column"
               marker={{
                 dataLabel: {
@@ -73,7 +73,7 @@ const Promedio = () => {
               dataSource={barChartData[1]}
               xName="x"
               yName="y"
-              name="hotel_comfort"
+              name="Limpieza"
               type="Column"
               marker={{
                 dataLabel: {
@@ -87,7 +87,7 @@ const Promedio = () => {
               dataSource={barChartData[2]}
               xName="x"
               yName="y"
-              name="hotel_services"
+              name="Precio/Calidad"
               type="Column"
               marker={{
                 dataLabel: {
@@ -102,7 +102,7 @@ const Promedio = () => {
               dataSource={barChartData[3]}
               xName="x"
               yName="y"
-              name="hotel_location"
+              name="Ubicación"
               type="Column"
               marker={{
                 dataLabel: {
@@ -117,7 +117,7 @@ const Promedio = () => {
               dataSource={barChartData[4]}
               xName="x"
               yName="y"
-              name="hotel_staff"
+              name="Wi-fi"
               type="Column"
               marker={{
                 dataLabel: {
@@ -132,37 +132,7 @@ const Promedio = () => {
               dataSource={barChartData[5]}
               xName="x"
               yName="y"
-              name="total"
-              type="Column"
-              marker={{
-                dataLabel: {
-                  visible: true,
-                  position: "Top",
-                  font: { fontWeight: "600", color: "#ffffff" },
-                },
-              }}
-            ></SeriesDirective>
-
-            <SeriesDirective
-              dataSource={barChartData[6]}
-              xName="x"
-              yName="y"
-              name="hotel_value"
-              type="Column"
-              marker={{
-                dataLabel: {
-                  visible: true,
-                  position: "Top",
-                  font: { fontWeight: "600", color: "#ffffff" },
-                },
-              }}
-            ></SeriesDirective>
-
-            <SeriesDirective
-              dataSource={barChartData[7]}
-              xName="x"
-              yName="y"
-              name="hotel_wifi"
+              name="Total"
               type="Column"
               marker={{
                 dataLabel: {
@@ -179,4 +149,4 @@ const Promedio = () => {
   );
 };
 
-export default Promedio;
+export default Top3;

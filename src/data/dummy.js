@@ -6,6 +6,9 @@ import {
   FaGlobeAmericas,
   FaThumbsUp,
   FaInfo,
+  FaTrophy,
+  FaThLarge,
+  FaLayerGroup,
 } from "react-icons/fa";
 import { FiEdit, FiActivity } from "react-icons/fi";
 import { BsKanban } from "react-icons/bs";
@@ -51,17 +54,18 @@ export const links = [
     title: "Metricas",
     links: [
       {
-        name: "total",
-        icon: <FaBed />,
-      },
-      {
-        name: "gasto",
-        icon: <FaDollarSign />,
+        name: "oficinas",
+        icon: <FaInfo />,
       },
 
       {
-        name: "Promedio",
-        icon: <FaBusAlt />,
+        name: "Distribucion",
+        icon: <FaThLarge />,
+      },
+
+      {
+        name: "top3",
+        icon: <FaTrophy />,
       },
       {
         name: "rrss",
@@ -72,8 +76,8 @@ export const links = [
         icon: <FaThumbsUp />,
       },
       {
-        name: "oficinas",
-        icon: <FaInfo />,
+        name: "total",
+        icon: <FaLayerGroup />,
       },
     ],
   },
@@ -326,13 +330,10 @@ export const lineChartData = [
 ];
 
 export const pieChartData = [
-  { x: "hotel_clean", y: 18, text: "18%" },
-  { x: "hotel_comfort", y: 8, text: "8%" },
-  { x: "hotel_services", y: 15, text: "15%" },
-  { x: "hotel_location", y: 11, text: "11%" },
-  { x: "hotel_staff", y: 18, text: "18%" },
-  { x: "total", y: 14, text: "14%" },
-  { x: "hotel_wifi", y: 16, text: "16%" },
+  { x: "Hotel", y: 18, text: "18%" },
+  { x: "Residencial", y: 8, text: "8%" },
+  { x: "Hostería", y: 15, text: "15%" },
+  { x: "Apart Hotel", y: 11, text: "11%" },
 ];
 
 export const contextMenuItems = [

@@ -11,8 +11,8 @@ import Tareas from "./pages/Tareas";
 import "./App.css";
 import Total from "./pages/Metricas/Total";
 import RRSS from "./pages/Metricas/RRSS";
-import Promedio from "./pages/Metricas/Promedio";
-import Gasto from "./pages/Metricas/Gasto";
+import Top3 from "./pages/Metricas/Top3";
+import Distribucion from "./pages/Metricas/Distribucion";
 import Reputacion from "./pages/Metricas/Reputacion";
 import Oficinas from "./pages/Metricas/Oficinas";
 import Editor from "./pages/Editor";
@@ -53,8 +53,8 @@ const App = () => {
               <Route path="/editor" element={<Editor />} />
 
               <Route path="/total" element={<Total />} />
-              <Route path="/gasto" element={<Gasto />} />
-              <Route path="/promedio" element={<Promedio />} />
+              <Route path="/Distribucion" element={<Distribucion />} />
+              <Route path="/Top3" element={<Top3 />} />
               <Route path="/rrss" element={<RRSS />} />
               <Route path="/reputacion" element={<Reputacion />} />
               <Route path="/oficinas" element={<Oficinas />} />

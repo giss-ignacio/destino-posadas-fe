@@ -10,13 +10,13 @@ import {
 } from "@syncfusion/ej2-react-charts";
 import { pieChartData } from "../../data/dummy";
 
-const Gasto = () => {
+const Distribucion = () => {
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20">
       <div className="w-full">
         <AccumulationChartComponent
           id="pie-chart"
-          title="Project Cost Breakdown"
+          title="Distribución de alojamientos por segmento"
           legendSettings={{
             visible: true,
             position: "Top",
@@ -55,4 +55,4 @@ const Gasto = () => {
     </div>
   );
 };
-export default Gasto;
+export default Distribucion;
