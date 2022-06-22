@@ -11,8 +11,25 @@ import {
   DataLabel,
 } from "@syncfusion/ej2-react-charts";
 import { barChartData } from "../../data/dummy";
+// import { GetDataOrion } from "../../components/getDataOrion";
 
 const Promedio = () => {
+  var axios = require("axios");
+
+  var config = {
+    method: "get",
+    url: "http://localhost:3009/api/fedata/hoteles",
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      let dataMock = response.data;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20">
       <div className=" w-full">

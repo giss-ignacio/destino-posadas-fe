@@ -363,13 +363,13 @@ export const doughnutChartData = [
 
 export const stackedChartData = [
   [
-    { x: "Teatros", y: 30 },
-    { x: "Edificios con valor arquitectónico", y: 40 },
-    { x: "Monumentos y estatuas", y: 60 },
-    { x: "Parques y plazas", y: 80 },
-    { x: "Lugares de compras", y: 111 },
-    { x: "Espectáculos", y: 127 },
-    { x: "Museos y centros culturales", y: 143 },
+    { x: "Total", y: 30 },
+    // { x: "Edificios con valor arquitectónico", y: 40 },
+    { x: "Wi-fi", y: 60 },
+    { x: "Ubicacion", y: 80 },
+    { x: "Precio/calidad", y: 111 },
+    { x: "Limpieza", y: 127 },
+    { x: "Personal", y: 143 },
   ],
 ];
 
