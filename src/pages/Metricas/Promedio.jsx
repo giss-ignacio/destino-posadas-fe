@@ -32,12 +32,12 @@ const Promedio = () => {
 
     let mostrar = data2[0];
     setPersonal(mostrar[0].Categoria.value);
-    setLimpieza(10);
-    setPersonal(20);
-    setPrecioCalidad(30);
-    setUbicacion(40);
-    setWifi(50);
-    setTotal(60);
+    setLimpieza(1);
+    setPersonal(2);
+    setPrecioCalidad(3);
+    setUbicacion(4);
+    setWifi(5);
+    setTotal(9);
   };
 
   const colorMappingData2 = [

@@ -10,8 +10,7 @@ import {
   ColumnSeries,
   DataLabel,
 } from "@syncfusion/ej2-react-charts";
-import { barChartData } from "../../data/dummy";
-// import { GetDataOrion } from "../../components/getDataOrion";
+
 import { useEffect, useState } from "react";
 
 const Top3 = () => {
@@ -22,6 +21,7 @@ const Top3 = () => {
   const [ubicacionHotel1, setUbicacionHotel1] = useState([]);
   const [wifiHotel1, setWifiHotel1] = useState([]);
   const [totalHotel1, setTotalHotel1] = useState([]);
+  const [nombreHotel1, setNombreHotel1] = useState([]);
 
   const [personalHotel2, setPersonalHotel2] = useState([]);
   const [limpiezaHotel2, setLimpiezaHotel2] = useState([]);
@@ -29,6 +29,7 @@ const Top3 = () => {
   const [ubicacionHotel2, setUbicacionHotel2] = useState([]);
   const [wifiHotel2, setWifiHotel2] = useState([]);
   const [totalHotel2, setTotalHotel2] = useState([]);
+  const [nombreHotel2, setNombreHotel2] = useState([]);
 
   const [personalHotel3, setPersonalHotel3] = useState([]);
   const [limpiezaHotel3, setLimpiezaHotel3] = useState([]);
@@ -36,6 +37,7 @@ const Top3 = () => {
   const [ubicacionHotel3, setUbicacionHotel3] = useState([]);
   const [wifiHotel3, setWifiHotel3] = useState([]);
   const [totalHotel3, setTotalHotel3] = useState([]);
+  const [nombreHotel3, setNombreHotel3] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
@@ -46,70 +48,64 @@ const Top3 = () => {
     const data2 = await data.json();
 
     let mostrar = data2[0];
+    console.log(mostrar.hotel1.total);
     //seteo
-    setPersonalHotel1(mostrar[0].Categoria.value);
-    setLimpiezaHotel1(10);
-    setPrecioCalidadHotel1(20);
-    setUbicacionHotel1(30);
-    setWifiHotel1(40);
-    setTotalHotel1(50);
+    setPersonalHotel1(mostrar.hotel1.personal);
+    setLimpiezaHotel1(mostrar.hotel1.limpieza);
+    setPrecioCalidadHotel1(mostrar.hotel1.precioCalidad);
+    setUbicacionHotel1(mostrar.hotel1.ubicacion);
+    setWifiHotel1(mostrar.hotel1.wifi);
+    setTotalHotel1(mostrar.hotel1.total);
+    setNombreHotel1(mostrar.hotel1.nombre);
 
-    setPersonalHotel2(20);
-    setLimpiezaHotel2(50);
-    setPrecioCalidadHotel2(80);
-    setUbicacionHotel2(30);
-    setWifiHotel2(40);
-    setTotalHotel2(50);
+    setPersonalHotel2(mostrar.hotel2.personal);
+    setLimpiezaHotel2(mostrar.hotel2.limpieza);
+    setPrecioCalidadHotel2(mostrar.hotel2.precioCalidad);
+    setUbicacionHotel2(mostrar.hotel2.ubicacion);
+    setWifiHotel2(mostrar.hotel2.wifi);
+    setTotalHotel2(mostrar.hotel2.total);
+    setNombreHotel2(mostrar.hotel2.nombre);
 
-    setPersonalHotel3(mostrar[0].Categoria.value);
-    setLimpiezaHotel3(10);
-    setPrecioCalidadHotel3(20);
-    setUbicacionHotel3(30);
-    setWifiHotel3(40);
-    setTotalHotel3(50);
+    setPersonalHotel3(mostrar.hotel3.personal);
+    setLimpiezaHotel3(mostrar.hotel3.limpieza);
+    setPrecioCalidadHotel3(mostrar.hotel3.precioCalidad);
+    setUbicacionHotel3(mostrar.hotel3.ubicacion);
+    setWifiHotel3(mostrar.hotel3.wifi);
+    setTotalHotel3(mostrar.hotel3.total);
+    setNombreHotel3(mostrar.hotel3.nombre);
   };
 
   const barChartData2 = [
     [
-      { x: "HOTEL 1: NOMBREHOTEL", y: personalHotel1 },
-      { x: "HOTEL 2: NOMBREHOTEL", y: personalHotel2 },
-      { x: "HOTEL 3: NOMBREHOTEL", y: personalHotel3 },
+      { x: "HOTEL 1: " + nombreHotel1, y: personalHotel1 },
+      { x: "HOTEL 2: " + nombreHotel2, y: personalHotel2 },
+      { x: "HOTEL 3: " + nombreHotel3, y: personalHotel3 },
     ],
     [
-      { x: "HOTEL 1: NOMBREHOTEL", y: limpiezaHotel1 },
-      { x: "HOTEL 2: NOMBREHOTEL", y: limpiezaHotel2 },
-      { x: "HOTEL 3: NOMBREHOTEL", y: limpiezaHotel3 },
+      { x: "HOTEL 1: " + nombreHotel1, y: limpiezaHotel1 },
+      { x: "HOTEL 2: " + nombreHotel2, y: limpiezaHotel2 },
+      { x: "HOTEL 3: " + nombreHotel3, y: limpiezaHotel3 },
     ],
     [
-      { x: "HOTEL 1: NOMBREHOTEL", y: precioCalidadHotel1 },
-      { x: "HOTEL 2: NOMBREHOTEL", y: precioCalidadHotel2 },
-      { x: "HOTEL 3: NOMBREHOTEL", y: precioCalidadHotel3 },
+      { x: "HOTEL 1: " + nombreHotel1, y: precioCalidadHotel1 },
+      { x: "HOTEL 2: " + nombreHotel2, y: precioCalidadHotel2 },
+      { x: "HOTEL 3: " + nombreHotel3, y: precioCalidadHotel3 },
     ],
     [
-      { x: "HOTEL 1: NOMBREHOTEL", y: ubicacionHotel1 },
-      { x: "HOTEL 2: NOMBREHOTEL", y: ubicacionHotel2 },
-      { x: "HOTEL 3: NOMBREHOTEL", y: ubicacionHotel3 },
+      { x: "HOTEL 1: " + nombreHotel1, y: ubicacionHotel1 },
+      { x: "HOTEL 2: " + nombreHotel2, y: ubicacionHotel2 },
+      { x: "HOTEL 3: " + nombreHotel3, y: ubicacionHotel3 },
     ],
     [
-      { x: "HOTEL 1: NOMBREHOTEL", y: wifiHotel1 },
-      { x: "HOTEL 2: NOMBREHOTEL", y: wifiHotel2 },
-      { x: "HOTEL 3: NOMBREHOTEL", y: wifiHotel3 },
+      { x: "HOTEL 1: " + nombreHotel1, y: wifiHotel1 },
+      { x: "HOTEL 2: " + nombreHotel2, y: wifiHotel2 },
+      { x: "HOTEL 3: " + nombreHotel3, y: wifiHotel3 },
     ],
     [
-      { x: "HOTEL 1: NOMBREHOTEL", y: totalHotel1 },
-      { x: "HOTEL 2: NOMBREHOTEL", y: totalHotel2 },
-      { x: "HOTEL 3: NOMBREHOTEL", y: totalHotel3 },
+      { x: "HOTEL 1: " + nombreHotel1, y: totalHotel1 },
+      { x: "HOTEL 2: " + nombreHotel2, y: totalHotel2 },
+      { x: "HOTEL 3: " + nombreHotel3, y: totalHotel3 },
     ],
-    // [
-    //   { x: "HOTEL 1: NOMBREHOTEL", y: 94 },
-    //   { x: "HOTEL 2: NOMBREHOTEL", y: 17 },
-    //   { x: "HOTEL 3: NOMBREHOTEL", y: 26 },
-    // ],
-    // [
-    //   { x: "HOTEL 1: NOMBREHOTEL", y: 94 },
-    //   { x: "HOTEL 2: NOMBREHOTEL", y: 17 },
-    //   { x: "HOTEL 3: NOMBREHOTEL", y: 26 },
-    // ],
   ];
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20">
