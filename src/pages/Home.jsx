@@ -32,18 +32,25 @@ const onMapInit = async (map) => {
 
 const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
+  const [totalOpiniones, setTotalOpiniones] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
   }, []);
 
   const obtenerDatos = async () => {
+    //promedio por noche
     const data = await fetch("http://localhost:3009/api/fedata/promedioNoche");
     const data2 = await data.json();
-    let mostrar = data2[0];
-
-    //seteo porcentajes
-    setPromedioPorNoche(mostrar);
+    let monto = data2[0];
+    setPromedioPorNoche(monto);
+    //total opiniones
+    const opiniones = await fetch(
+      "http://localhost:3009/api/fedata/totalOpiniones"
+    );
+    const opiniones2 = await opiniones.json();
+    let totalOpiniones = opiniones2[0];
+    setTotalOpiniones(totalOpiniones);
   };
 
   return (
@@ -71,7 +78,7 @@ const Home = () => {
               <MdOutlineSupervisorAccount />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">126</span>
+              <span className="text-lg font-semibold">{totalOpiniones}</span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
             <p className="text-sm text-gray-500 mt-1">Total de opiniones</p>
