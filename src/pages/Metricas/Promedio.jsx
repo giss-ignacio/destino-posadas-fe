@@ -11,13 +11,10 @@ import {
   RangeColorSettingsDirective,
   RangeColorSettingDirective,
 } from "@syncfusion/ej2-react-charts";
-import { colorMappingData } from "../../data/dummy";
 
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Promedio = () => {
-  // const [hoteles, setHoteles] = useState([]);
   const [personal, setPersonal] = useState([]);
   const [limpieza, setLimpieza] = useState([]);
   const [precioCalidad, setPrecioCalidad] = useState([]);
@@ -26,7 +23,6 @@ const Promedio = () => {
   const [total, setTotal] = useState([]);
 
   useEffect(() => {
-    // const endPoint = "http://localhost:3009/api/fedata/hoteles";
     obtenerDatos();
   }, []);
 
@@ -103,19 +99,19 @@ const Promedio = () => {
           </SeriesCollectionDirective>
           <RangeColorSettingsDirective>
             <RangeColorSettingDirective
-              label="1°C to 10°C"
+              label=""
               start={1}
               end={10}
               colors={colorMappingData2[4]}
             ></RangeColorSettingDirective>
             <RangeColorSettingDirective
-              label="11°C to 20°C"
+              label=""
               start={11}
               end={20}
               colors={colorMappingData2[4]}
             ></RangeColorSettingDirective>
             <RangeColorSettingDirective
-              label="21°C to 30°C"
+              label=""
               start={21}
               end={30}
               colors={colorMappingData2[4]}

@@ -38,17 +38,14 @@ const Top3 = () => {
   const [totalHotel3, setTotalHotel3] = useState([]);
 
   useEffect(() => {
-    // const endPoint = "http://localhost:3009/api/fedata/hoteles";
     obtenerDatos();
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:3009/api/fedata/hoteles");
+    const data = await fetch("http://localhost:3009/api/fedata/top3hoteles");
     const data2 = await data.json();
 
     let mostrar = data2[0];
-    // console.log(mostrar[0].Categoria.value);
-
     //seteo
     setPersonalHotel1(mostrar[0].Categoria.value);
     setLimpiezaHotel1(10);

@@ -42,7 +42,7 @@ const Distribucion = () => {
 
     //seteo cantidad de hoteles
     setHotelCant(mostrar.HotelesCant);
-    setResidencialCant(mostrar.ApartHotelesCant);
+    setResidencialCant(mostrar.ResidencialesCant);
     setHosteriaCant(mostrar.HosteriasCant);
     setApartHotelCant(mostrar.ApartHotelesCant);
   };
