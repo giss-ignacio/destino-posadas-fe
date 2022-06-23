@@ -18,31 +18,53 @@ const Distribucion = () => {
   const [hosteria, setHosteria] = useState([]);
   const [apartHotel, setApartHotel] = useState([]);
 
+  const [hotelCant, setHotelCant] = useState([]);
+  const [residencialCant, setResidencialCant] = useState([]);
+  const [hosteriaCant, setHosteriaCant] = useState([]);
+  const [apartHotelCant, setApartHotelCant] = useState([]);
+
   useEffect(() => {
     // const endPoint = "http://localhost:3009/api/fedata/hoteles";
     obtenerDatos();
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:3009/api/fedata/hoteles");
+    const data = await fetch(
+      "http://localhost:3009/api/fedata/distribucionAlojamientos"
+    );
     const data2 = await data.json();
-
     let mostrar = data2[0];
-    console.log(mostrar);
 
-    // setHoteles(mostrar);
-    console.log(mostrar[0].Categoria.value);
-    setHotel(mostrar[0].Categoria.value);
-    setResidencial(10);
-    setHosteria(20);
-    setApartHotel(30);
+    //seteo porcentajes
+    setHotel(mostrar.Hoteles);
+    setResidencial(mostrar.Residenciales);
+    setHosteria(mostrar.Hosterias);
+    setApartHotel(mostrar.ApartHoteles);
+
+    //seteo cantidad de hoteles
+    setHotelCant(mostrar.HotelesCant);
+    setResidencialCant(mostrar.ApartHotelesCant);
+    setHosteriaCant(mostrar.HosteriasCant);
+    setApartHotelCant(mostrar.ApartHotelesCant);
   };
 
   const pieChartData2 = [
-    { x: "Hotel", y: hotel, text: hotel + "%" },
-    { x: "Residencial", y: residencial, text: residencial + "%" },
-    { x: "Hostería", y: hosteria, text: hosteria + "%" },
-    { x: "Apart Hotel", y: apartHotel, text: apartHotel + "%" },
+    { x: "Hotel ,cantidad: " + hotelCant, y: hotel, text: hotel + "%" },
+    {
+      x: "Residencial ,cantidad: " + residencialCant,
+      y: residencial,
+      text: residencial + "%",
+    },
+    {
+      x: "Hostería ,cantidad: " + hosteriaCant,
+      y: hosteria,
+      text: hosteria + "%",
+    },
+    {
+      x: "Apart Hotel ,cantidad: " + apartHotelCant,
+      y: apartHotel,
+      text: apartHotel + "%",
+    },
   ];
 
   return (

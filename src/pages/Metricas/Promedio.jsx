@@ -35,11 +35,6 @@ const Promedio = () => {
     const data2 = await data.json();
 
     let mostrar = data2[0];
-    console.log(mostrar);
-
-    // setHoteles(mostrar);
-    console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO Funciona?");
-    console.log(mostrar[0].Categoria.value);
     setPersonal(mostrar[0].Categoria.value);
     setLimpieza(10);
     setPersonal(20);
