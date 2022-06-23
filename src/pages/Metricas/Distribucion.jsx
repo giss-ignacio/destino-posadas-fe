@@ -12,19 +12,18 @@ import { pieChartData } from "../../data/dummy";
 import { useEffect, useState } from "react";
 
 const Distribucion = () => {
-  // const [hoteles, setHoteles] = useState([]);
+  //porcentajes
   const [hotel, setHotel] = useState([]);
   const [residencial, setResidencial] = useState([]);
   const [hosteria, setHosteria] = useState([]);
   const [apartHotel, setApartHotel] = useState([]);
-
+  //cantidades
   const [hotelCant, setHotelCant] = useState([]);
   const [residencialCant, setResidencialCant] = useState([]);
   const [hosteriaCant, setHosteriaCant] = useState([]);
   const [apartHotelCant, setApartHotelCant] = useState([]);
 
   useEffect(() => {
-    // const endPoint = "http://localhost:3009/api/fedata/hoteles";
     obtenerDatos();
   }, []);
 
