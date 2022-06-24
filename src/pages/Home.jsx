@@ -33,6 +33,7 @@ const onMapInit = async (map) => {
 const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
   const [totalOpiniones, setTotalOpiniones] = useState([]);
+  const [cantidadAlojamientos, setCantidadAlojamientos] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
@@ -51,6 +52,18 @@ const Home = () => {
     const opiniones2 = await opiniones.json();
     let totalOpiniones = opiniones2[0];
     setTotalOpiniones(totalOpiniones);
+    //cantidad alojamientos
+    const datos = await fetch(
+      "http://localhost:3009/api/fedata/distribucionAlojamientos"
+    );
+    const data3 = await datos.json();
+    let cantidadAlojamientos =
+      data3[0].HotelesCant +
+      data3[0].ApartHotelesCant +
+      data3[0].ResidencialesCant +
+      data3[0].HosteriasCant;
+
+    setCantidadAlojamientos(cantidadAlojamientos);
   };
 
   return (
@@ -88,7 +101,9 @@ const Home = () => {
               <BsBoxSeam />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">30</span>
+              <span className="text-lg font-semibold">
+                {cantidadAlojamientos}
+              </span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
             <p className="text-sm text-gray-500 mt-1">
