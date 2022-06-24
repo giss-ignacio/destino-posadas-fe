@@ -10,7 +10,7 @@ import Tareas from "./pages/Tareas";
 
 import "./App.css";
 import Total from "./pages/Metricas/Total";
-import RRSS from "./pages/Metricas/RRSS";
+import Wifi from "./pages/Metricas/Wifi";
 import Top3 from "./pages/Metricas/Top3";
 import Distribucion from "./pages/Metricas/Distribucion";
 import Reputacion from "./pages/Metricas/Reputacion";
@@ -55,7 +55,7 @@ const App = () => {
               <Route path="/total" element={<Total />} />
               <Route path="/Distribucion" element={<Distribucion />} />
               <Route path="/top%203" element={<Top3 />} />
-              <Route path="/rrss" element={<RRSS />} />
+              <Route path="/Wifi" element={<Wifi />} />
               <Route path="/reputacion" element={<Reputacion />} />
               <Route path="/promedio" element={<Promedio />} />
             </Routes>
