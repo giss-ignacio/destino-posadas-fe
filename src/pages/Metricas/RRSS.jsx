@@ -11,90 +11,81 @@ import {
 
 import {React, useEffect, useState } from "react";
 
-const RRSS = () => {
-  const [valor, setValor] = useState([]);
+ const RRSS = () => {
+   const [valor, setValor] = useState([]);
 
-var x
-useEffect(() => {
-  obtenerDatos();
-}, []);
-let m = "Enero";
+ var x
+ useEffect(() => {
+   obtenerDatos();
+ }, []);
+// let m = "Enero";
 
 const obtenerDatos = async () => {
-  const data = await fetch("http://localhost:3009/api/fedata/getServicioPorMes?a=2022&m=Enero&c=WiFi&t=Hotel");
-  //const data = await fetch("http://localhost:3009/api/fedata/getServicioPorMes?a=2022&m="+m+"&c=WiFi&t=Hotel");
+  const data = await fetch("http://localhost:3009/api/fedata/getServiciosHistorico2022?c=WiFi");
   const data2 = await data.json();
   setValor(data2[0])
-  x = data2
-  console.log("Valor de data2 :"+data2[0])
+  x = data2[0]
+  console.log("Valor de data2 :")
+  console.log(data2[0])
 };
-console.log("Valor x :" + x)
-var miArray = []
-miArray.push(m)
-console.log(miArray)
-console.log("Valor :"+valor)
 
 var respuesta =
 [
     [
     //Verde  Hoteles
-    { x: new Date(2022, 1, 1), y: 9 },
-    { x: new Date(2022, 2, 1), y: 3.4 },
-    { x: new Date(2022, 3, 1), y: 3.4 },
-    { x: new Date(2022, 4, 1), y: 1.6 },
-    { x: new Date(2022, 5, 1), y: 2.3 },
-    { x: new Date(2022, 6, 1), y: 2.5 },
-    { x: new Date(2022, 7, 1), y: 2.9 },
-    { x: new Date(2022, 8, 1), y: 3.8 },
-    { x: new Date(2022, 9, 1), y: 1.4 },
-    { x: new Date(2022, 10, 1), y: 3.1 },
-    { x: new Date(2022, 11, 1), y: 9 },
-    { x: new Date(2022, 12, 1), y: 9 },
+    { x: new Date(2021, 7, 1), y: 9.1 },
+    { x: new Date(2021, 8, 1), y: 3.4 },
+    { x: new Date(2021, 9, 1), y: 3.4 },
+    { x: new Date(2021, 10, 1), y: 1.6 },
+    { x: new Date(2021, 11, 1), y: 2.3 },
+    { x: new Date(2022, 0, 1), y: 2.5 },
+    { x: new Date(2022, 1, 1), y: 2.9 },
+    { x: new Date(2022, 2, 1), y: 3.8 },
+    { x: new Date(2022, 3, 1), y: 1.4 },
+    { x: new Date(2022, 4, 1), y: 3.1 },
+    { x: new Date(2022, 5, 1), y: 9 },
   ],
   [
     //Verde  Recidencial
-    { x: new Date(2022, 1, 1), y: 5 },
-    { x: new Date(2022, 2, 1), y: 3.4 },
-    { x: new Date(2022, 3, 1), y: 5.4 },
-    { x: new Date(2022, 4, 1), y: 1.6 },
-    { x: new Date(2022, 5, 1), y: 5.3 },
-    { x: new Date(2022, 6, 1), y: 2.5 },
-    { x: new Date(2022, 7, 1), y: 5.9 },
-    { x: new Date(2022, 8, 1), y: 3.8 },
-    { x: new Date(2022, 9, 1), y: 1.4 },
-    { x: new Date(2022, 10, 1), y: 3.1 },
-    { x: new Date(2022, 11, 1), y: 9 },
-    { x: new Date(2022, 12, 1), y: 9 },
+    { x: new Date(2021, 7, 1), y: 5 },
+    { x: new Date(2021, 8, 1), y: 3.4 },
+    { x: new Date(2021, 9, 1), y: 5.4 },
+    { x: new Date(2021, 10, 1), y: 1.6 },
+    { x: new Date(2021, 11, 1), y: 5.3 },
+    { x: new Date(2022, 0, 1), y: 2.5 },
+    { x: new Date(2022, 1, 1), y: 5.9 },
+    { x: new Date(2022, 2, 1), y: 3.8 },
+    { x: new Date(2022, 3, 1), y: 1.4 },
+    { x: new Date(2022, 4, 1), y: 3.1 },
+    { x: new Date(2022, 5, 1), y: 9 },
   ],
   [
     //Gris APART
-    { x: new Date(2022, 1, 1), y: 9 },
-    { x: new Date(2022, 2, 1), y: 9 },
-    { x: new Date(2022, 3, 1), y: 9 },
-    { x: new Date(2022, 4, 1), y: 9 },
-    { x: new Date(2022, 5, 1), y: 5 },
-    { x: new Date(2022, 6, 1), y: 5 },
-    { x: new Date(2022, 7, 1), y: 5 },
-    { x: new Date(2022, 8, 1), y: 8 },
-    { x: new Date(2022, 9, 1), y: 8 },
-    { x: new Date(2022, 10, 1), y: 8 },
-    { x: new Date(2022, 11, 1), y: 9 },
-    { x: new Date(2022, 12, 1), y: 9 },
+    { x: new Date(2021, 7, 1), y: 5.9 },
+    { x: new Date(2021, 8, 1), y: 5.3 },
+    { x: new Date(2021, 9, 1), y: 4.8 },
+    { x: new Date(2021, 10, 1), y: 4.3 },
+    { x: new Date(2021, 11, 1), y: 5 },
+    { x: new Date(2022, 0, 1), y: 5 },
+    { x: new Date(2022, 1, 1), y: 5 },
+    { x: new Date(2022, 2, 1), y: 8 },
+    { x: new Date(2022, 3, 1), y: 8 },
+    { x: new Date(2022, 4, 1), y: 8 },
+    { x: new Date(2022, 5, 1), y: 9 },
   ],
   [
     //azul
-    { x: new Date(2022, 1, 1), y: 0.8 },
-    { x: new Date(2022, 2, 1), y: 1.3 },
+    { x: new Date(2021, 7, 1), y: 0.8 },
+    { x: new Date(2021, 8, 1), y: 1.3 },
+    { x: new Date(2021, 9, 1), y: 1.1 },
+    { x: new Date(2021, 10, 1), y: 1.6 },
+    { x: new Date(2021, 11, 1), y: 2 },
+    { x: new Date(2022, 0, 1), y: 1.7 },
+    { x: new Date(2022, 1, 1), y: 2.3 },
+    { x: new Date(2022, 2, 1), y: 2.7 },
     { x: new Date(2022, 3, 1), y: 1.1 },
-    { x: new Date(2022, 4, 1), y: 1.6 },
-    { x: new Date(2022, 5, 1), y: 2 },
-    { x: new Date(2022, 6, 1), y: 1.7 },
-    { x: new Date(2022, 7, 1), y: 2.3 },
-    { x: new Date(2022, 8, 1), y: 2.7 },
-    { x: new Date(2022, 9, 1), y: 1.1 },
-    { x: new Date(2022, 10, 1), y: 2.3 },
-    { x: new Date(2022, 11, 1), y: 9 },
-    { x: new Date(2022, 12, 1), y: 9 },
+    { x: new Date(2022, 4, 1), y: 2.3 },
+    { x: new Date(2022, 5, 1), y: 9 },
   ],
 ];
 
@@ -122,7 +113,7 @@ var respuesta =
             minorTickLines: { width: 0 },
           }}
           chartArea={{ border: { width: 0 } }}
-          title='AV Valoración WiFi por tipo de Alojamiento'
+          title='Valoración promedio de WiFi por tipo de Alojamiento'
         >
           <Inject services={[SplineAreaSeries, DateTime, Legend]} />
           <SeriesCollectionDirective>
