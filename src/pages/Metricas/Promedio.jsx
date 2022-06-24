@@ -27,9 +27,10 @@ const Promedio = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:3009/api/fedata/promedioPosadas");
+    const data = await fetch(
+      "http://localhost:3009/api/fedata/promedioPosadas"
+    );
     const data2 = await data.json();
-
 
     setPersonal(data2.personal);
     setLimpieza(data2.limpieza);

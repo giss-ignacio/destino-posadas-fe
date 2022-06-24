@@ -28,24 +28,25 @@ const StackedChart = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:3009/api/fedata/hoteles");
+    const data = await fetch(
+      "http://localhost:3009/api/fedata/promedioPosadas"
+    );
     const data2 = await data.json();
 
     let mostrar = data2[0];
     console.log(mostrar);
 
-    setPersonal(mostrar[0].Categoria.value);
-    setLimpieza(10);
-    setPrecioCalidad(57);
-    setUbicacion(70);
-    setWifi(88);
-    setTotal(99);
+    setPersonal(data2.personal);
+    setLimpieza(data2.limpieza);
+    setPrecioCalidad(data2.precioCalidad);
+    setUbicacion(data2.ubicacion);
+    setWifi(data2.wifi);
+    setTotal(data2.total);
   };
 
   const stackedChartData2 = [
     [
       { x: "Total", y: total },
-      // { x: "Edificios con valor arquitectónico", y: 40 },
       { x: "Wi-fi", y: wifi },
       { x: "Ubicacion", y: ubicacion },
       { x: "Precio/calidad", y: precioCalidad },
@@ -69,8 +70,8 @@ const StackedChart = () => {
       primaryYAxis={{
         lineStyle: { width: 0 },
         minimum: 0,
-        maximum: 200,
-        interval: 100,
+        maximum: 10,
+        interval: 5,
         majorTickLines: { width: 0 },
         majorGridLines: { width: 1 },
         minorGridLines: { width: 1 },

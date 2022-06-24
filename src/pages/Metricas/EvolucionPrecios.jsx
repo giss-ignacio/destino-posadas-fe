@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ChartComponent,
   SeriesCollectionDirective,
@@ -10,10 +10,10 @@ import {
   Zoom,
   Logarithmic,
   Crosshair,
-} from '@syncfusion/ej2-react-charts';
-import { financialChartData } from '../../data/dummy';
+} from "@syncfusion/ej2-react-charts";
+import { financialChartData } from "../../data/dummy";
 
-let date1 = new Date('2017, 1, 1');
+let date1 = new Date("2017, 1, 1");
 let returnValue = financialChartData.filter(filterValue);
 function filterValue(value) {
   if (value.x >= date1) {
@@ -21,22 +21,22 @@ function filterValue(value) {
     return value.x, value.high, value.low;
   }
 }
-const Reputacion = () => {
+const EvolucionPrecios = () => {
   return (
-    <div className='md:m-10 m-4 md:mt-40 mt-20'>
-      <div className='w-full'>
+    <div className="md:m-10 m-4 md:mt-40 mt-20">
+      <div className="w-full">
         <ChartComponent
-          id='charts'
-          style={{ textAlign: 'center' }}
+          id="charts"
+          style={{ textAlign: "center" }}
           primaryXAxis={{
-            valueType: 'DateTime',
-            minimum: new Date('2016, 12, 31'),
-            maximum: new Date('2017, 9, 30'),
+            valueType: "DateTime",
+            minimum: new Date("2016, 12, 31"),
+            maximum: new Date("2017, 9, 30"),
             crosshairTooltip: { enable: true },
             majorGridLines: { width: 0 },
           }}
           primaryYAxis={{
-            title: 'Price',
+            title: "Price",
             minimum: 100,
             maximum: 180,
             interval: 20,
@@ -47,8 +47,8 @@ const Reputacion = () => {
           legendSettings={{ visible: false }}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true, shared: true }}
-          crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
-          title='AAPL Historical'
+          crosshair={{ enable: true, lineType: "Vertical", line: { width: 0 } }}
+          title="AAPL Historical"
         >
           <Inject
             services={[
@@ -63,12 +63,12 @@ const Reputacion = () => {
           <SeriesCollectionDirective>
             <SeriesDirective
               dataSource={returnValue}
-              xName='x'
-              yName='low'
-              name='Apple Inc'
-              type='Hilo'
-              low='low'
-              high='high'
+              xName="x"
+              yName="low"
+              name="Apple Inc"
+              type="Hilo"
+              low="low"
+              high="high"
             ></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
@@ -76,4 +76,4 @@ const Reputacion = () => {
     </div>
   );
 };
-export default Reputacion;
+export default EvolucionPrecios;
