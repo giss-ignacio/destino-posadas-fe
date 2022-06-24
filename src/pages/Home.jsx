@@ -153,7 +153,7 @@ const Home = () => {
                 {/* <p className="text-gray-500 mt-1">Cantidad de atractivos</p> */}
               </div>
               <div className="mt-8">
-                <p className="text-3xl font-semibold">22.123</p>
+                <p className="text-3xl font-semibold">109.872</p>
 
                 <p className="text-gray-500 mt-1">Cantidad de valoraciones</p>
               </div>

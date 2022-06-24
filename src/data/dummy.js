@@ -12,6 +12,7 @@ import {
   FaBalanceScale,
   FaHotel,
   FaWifi,
+  FaWaveSquare,
 } from "react-icons/fa";
 import { FiEdit, FiActivity } from "react-icons/fi";
 import { BsKanban } from "react-icons/bs";
@@ -74,14 +75,14 @@ export const links = [
         name: "Wifi",
         icon: <FaWifi />,
       },
-      // {
-      //   name: "reputacion",
-      //   icon: <FaThumbsUp />,
-      // },
-      // {
-      //   name: "total",
-      //   icon: <FaLayerGroup />,
-      // },
+      {
+        name: "EvolucionPrecios",
+        icon: <FaWaveSquare />,
+      },
+      {
+        name: "total",
+        icon: <FaLayerGroup />,
+      },
     ],
   },
 ];
