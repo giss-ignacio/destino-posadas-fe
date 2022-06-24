@@ -17,7 +17,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Promedio = () => {
-  // const [hoteles, setHoteles] = useState([]);
   const [personal, setPersonal] = useState([]);
   const [limpieza, setLimpieza] = useState([]);
   const [precioCalidad, setPrecioCalidad] = useState([]);
@@ -26,27 +25,20 @@ const Promedio = () => {
   const [total, setTotal] = useState([]);
 
   useEffect(() => {
-    // const endPoint = "http://localhost:3009/api/fedata/hoteles";
     obtenerDatos();
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:3009/api/fedata/hoteles");
+    const data = await fetch("http://localhost:3009/api/fedata/promedioPosadas");
     const data2 = await data.json();
 
-    let mostrar = data2[0];
-    console.log(mostrar);
 
-    // setHoteles(mostrar);
-    console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO Funciona?");
-    console.log(mostrar[0].Categoria.value);
-    setPersonal(mostrar[0].Categoria.value);
-    setLimpieza(10);
-    setPersonal(20);
-    setPrecioCalidad(30);
-    setUbicacion(40);
-    setWifi(50);
-    setTotal(60);
+    setPersonal(data2.personal);
+    setLimpieza(data2.limpieza);
+    setPrecioCalidad(data2.precioCalidad);
+    setUbicacion(data2.ubicacion);
+    setWifi(data2.wifi);
+    setTotal(data2.total);
   };
 
   const colorMappingData2 = [
