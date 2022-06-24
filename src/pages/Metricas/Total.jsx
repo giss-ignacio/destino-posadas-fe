@@ -35,11 +35,11 @@ const Viajeros = () => {
             minimum: 0,
             maximum: 100,
             interval: 20,
-            lineStyle: { width: 0 },
-            majorTickLines: { width: 0 },
-            minorTickLines: { width: 0 },
+            lineStyle: { width: 3 },
+            majorTickLines: { width: 10 },
+            minorTickLines: { width: 10 },
           }}
-          chartArea={{ border: { width: 0 } }}
+          chartArea={{ border: { width: 1 } }}
           tooltip={{ enable: true }}
           title="Promedio - Total"
         >
@@ -49,8 +49,8 @@ const Viajeros = () => {
               dataSource={lineChartData[0]}
               xName="x"
               yName="y"
-              name="Germany"
-              width={2}
+              name="Hotel"
+              width={10}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
             ></SeriesDirective>
@@ -58,8 +58,8 @@ const Viajeros = () => {
               dataSource={lineChartData[1]}
               xName="x"
               yName="y"
-              name="England"
-              width={2}
+              name="Apart"
+              width={10}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
             ></SeriesDirective>
