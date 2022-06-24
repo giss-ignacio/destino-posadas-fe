@@ -12,6 +12,7 @@ import { IoIosMore } from "react-icons/io";
 import StackedChart from "../components/StackedChart";
 import DoughnutChart from "../components/DoughnutChart";
 import { Map, loadDataLayer } from "@bayer/ol-kit";
+import { useEffect, useState } from "react";
 
 const onMapInit = async (map) => {
   // nice to have map set on the window while debugging
@@ -30,6 +31,41 @@ const onMapInit = async (map) => {
 };
 
 const Home = () => {
+  const [promedioPorNoche, setPromedioPorNoche] = useState([]);
+  const [totalOpiniones, setTotalOpiniones] = useState([]);
+  const [cantidadAlojamientos, setCantidadAlojamientos] = useState([]);
+
+  useEffect(() => {
+    obtenerDatos();
+  }, []);
+
+  const obtenerDatos = async () => {
+    //promedio por noche
+    const data = await fetch("http://localhost:3009/api/fedata/promedioNoche");
+    const data2 = await data.json();
+    let monto = data2[0];
+    setPromedioPorNoche(monto);
+    //total opiniones
+    const opiniones = await fetch(
+      "http://localhost:3009/api/fedata/totalOpiniones"
+    );
+    const opiniones2 = await opiniones.json();
+    let totalOpiniones = opiniones2[0];
+    setTotalOpiniones(totalOpiniones);
+    //cantidad alojamientos
+    const datos = await fetch(
+      "http://localhost:3009/api/fedata/distribucionAlojamientos"
+    );
+    const data3 = await datos.json();
+    let cantidadAlojamientos =
+      data3[0].HotelesCant +
+      data3[0].ApartHotelesCant +
+      data3[0].ResidencialesCant +
+      data3[0].HosteriasCant;
+
+    setCantidadAlojamientos(cantidadAlojamientos);
+  };
+
   return (
     <div className="mt-24">
       <div className="flex flex-wrap justify-center">
@@ -39,7 +75,7 @@ const Home = () => {
               <p className="font-bold text-gray-500">
                 Promedio habitación por noche
               </p>
-              <p className="text-2xl">10.000$</p>
+              <p className="text-2xl">{promedioPorNoche}$</p>
             </div>
             <button className="text-2xl bg-light-red opacity-0.9 text-white rounded-full  p-4">
               <BsCurrencyDollar />
@@ -55,19 +91,19 @@ const Home = () => {
               <MdOutlineSupervisorAccount />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">126</span>
+              <span className="text-lg font-semibold">{totalOpiniones}</span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
-            <p className="text-sm text-gray-500 mt-1">
-              Promedio de opiniones por alojamiento
-            </p>
+            <p className="text-sm text-gray-500 mt-1">Total de opiniones</p>
           </div>
           <div className="bg-white w-56 p-4 border-r-1 border-color">
             <button className="text-2xl text-icon-light-orange bg-icon-light-orange opacity-0.9 rounded-full  p-4">
               <BsBoxSeam />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">30</span>
+              <span className="text-lg font-semibold">
+                {cantidadAlojamientos}
+              </span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
             <p className="text-sm text-gray-500 mt-1">
@@ -94,7 +130,9 @@ const Home = () => {
               <span className="text-lg font-semibold">23 dias</span>
               {/* <span className="text-sm text-red-500 ml-2">-4%</span> */}
             </p>
-            <p className="text-sm text-gray-500 mt-1">Actualizado hace</p>
+            <p className="text-sm text-gray-500 mt-1">
+              Desde la última actualización
+            </p>
           </div>
         </div>
       </div>

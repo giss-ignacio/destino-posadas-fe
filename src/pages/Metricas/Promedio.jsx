@@ -11,9 +11,7 @@ import {
   RangeColorSettingsDirective,
   RangeColorSettingDirective,
 } from "@syncfusion/ej2-react-charts";
-import { colorMappingData } from "../../data/dummy";
 
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Promedio = () => {
@@ -50,12 +48,6 @@ const Promedio = () => {
       { x: "Ubicación", y: ubicacion },
       { x: "Wi-fi", y: wifi },
       { x: "Total", y: total },
-      // { x: "July", y: 29.4 },
-      // { x: "Aug", y: 29.6 },
-      // { x: "Sep", y: 25.8 },
-      // { x: "Oct", y: 21.1 },
-      // { x: "Nov", y: 15.5 },
-      // { x: "Dec", y: 9.9 },
     ],
     ["#FFFF99"],
     ["#FFA500"],
@@ -77,10 +69,9 @@ const Promedio = () => {
             lineStyle: { width: 0 },
             majorTickLines: { width: 0 },
             minorTickLines: { width: 0 },
-            labelFormat: "{value}", //aca saque el º
+            labelFormat: "{value}",
             title: "Calificación",
           }}
-          // title="PROMEDIO GENERAL"
           title={"Promedio General de Posadas"}
           chartArea={{ border: { width: 0 } }}
           legendSettings={{
@@ -107,19 +98,19 @@ const Promedio = () => {
           </SeriesCollectionDirective>
           <RangeColorSettingsDirective>
             <RangeColorSettingDirective
-              label="1°C to 10°C"
+              label=""
               start={1}
               end={10}
               colors={colorMappingData2[4]}
             ></RangeColorSettingDirective>
             <RangeColorSettingDirective
-              label="11°C to 20°C"
+              label=""
               start={11}
               end={20}
               colors={colorMappingData2[4]}
             ></RangeColorSettingDirective>
             <RangeColorSettingDirective
-              label="21°C to 30°C"
+              label=""
               start={21}
               end={30}
               colors={colorMappingData2[4]}
