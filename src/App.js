@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
 import Calendario from "./pages/Calendario";
 import Hoteles from "./pages/Hoteles";
 import Tareas from "./pages/Tareas";
@@ -44,7 +45,7 @@ const App = () => {
           </div>
           <div>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<SignIn />} />
 
               <Route path="/resumen" element={<Home />} />
               <Route path="/calendario" element={<Calendario />} />
