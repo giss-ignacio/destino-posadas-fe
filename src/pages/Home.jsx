@@ -1,34 +1,11 @@
 import React from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { MdOutlineSupervisorAccount } from "react-icons/md";
-import { BsBoxSeam, BsShield, BsChatLeft } from "react-icons/bs";
-import { FiBarChart, FiCreditCard, FiStar } from "react-icons/fi";
+import { BsBoxSeam } from "react-icons/bs";
+import { FiBarChart } from "react-icons/fi";
 import { HiOutlineRefresh } from "react-icons/hi";
-import { GoPrimitiveDot } from "react-icons/go";
-import { TiTick } from "react-icons/ti";
-import { AiOutlineDelete } from "react-icons/ai";
-import { IoIosMore } from "react-icons/io";
-
 import StackedChart from "../components/StackedChart";
-import DoughnutChart from "../components/DoughnutChart";
-import { Map, loadDataLayer } from "@bayer/ol-kit";
 import { useEffect, useState } from "react";
-
-const onMapInit = async (map) => {
-  // nice to have map set on the window while debugging
-  window.map = map;
-  // find a geojson or kml dataset (url or file) to load on the map
-  const data = {
-    url: "https://data.nasa.gov/api/geospatial/7zbq-j77a?method=export&format=KML",
-    id: "world_country_boundaries",
-    name: "World Country Boundaries",
-  };
-  const dataLayer = await loadDataLayer(map, data.url);
-
-  // set the title and id on the layer to show in LayerPanel
-  dataLayer.set("title", data.name);
-  dataLayer.set("id", data.name);
-};
 
 const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
@@ -174,6 +151,7 @@ const Home = () => {
               src="https://one-point-map.herokuapp.com/?lat=-27.39&long=-55.92"
               width="339px"
               height="450px"
+              title="map"
             />
           </div>
           {/* 

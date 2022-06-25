@@ -1,22 +1,13 @@
 import { AiOutlineCalendar } from "react-icons/ai";
 import {
-  FaBed,
-  FaDollarSign,
-  FaBusAlt,
-  FaGlobeAmericas,
-  FaThumbsUp,
-  FaInfo,
   FaTrophy,
   FaThLarge,
   FaLayerGroup,
   FaBalanceScale,
-  FaHotel,
   FaWifi,
   FaWaveSquare,
 } from "react-icons/fa";
-import { FiEdit, FiActivity } from "react-icons/fi";
-import { BsKanban } from "react-icons/bs";
-import { RiContactsLine } from "react-icons/ri";
+import { FiActivity } from "react-icons/fi";
 
 export const links = [
   {

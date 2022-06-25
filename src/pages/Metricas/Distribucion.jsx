@@ -8,7 +8,6 @@ import {
   AccumulationDataLabel,
   Inject,
 } from "@syncfusion/ej2-react-charts";
-import { pieChartData } from "../../data/Estructura";
 import { useEffect, useState } from "react";
 
 const Distribucion = () => {

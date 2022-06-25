@@ -35,61 +35,59 @@ const Hoteles = () => {
   };
 
   return (
-    // <div className='control-pane md:m-10 m-4'>
-    //   <div className='control-section'>
-    //     <GridComponent
-    //       dataSource={customersData}
-    //       enableHover={false}
-    //       allowPaging={true}
-    //       pageSettings={{ pageCount: 5 }}
-    //       selectionSettings={selectionsettings}
-    //       toolbar={toolbarOptions}
-    //       editSettings={editing}
-    //     >
-    //       <ColumnsDirective>
-    //         <ColumnDirective type='checkbox' width='50'></ColumnDirective>
+    <div className="control-pane md:m-10 m-4">
+      <div className="control-section">
+        <GridComponent
+          dataSource={customersData}
+          enableHover={false}
+          allowPaging={true}
+          pageSettings={{ pageCount: 5 }}
+          selectionSettings={selectionsettings}
+          toolbar={toolbarOptions}
+          editSettings={editing}
+        >
+          <ColumnsDirective>
+            <ColumnDirective type="checkbox" width="50"></ColumnDirective>
 
-    //         <ColumnDirective
-    //           headerText='Customer'
-    //           width='180'
-    //           template={gridTemplate}
-    //           textAlign='Center'
-    //         />
+            <ColumnDirective
+              headerText="Customer"
+              width="180"
+              template={gridTemplate}
+              textAlign="Center"
+            />
 
-    //         <ColumnDirective
-    //           field='ProjectName'
-    //           headerText='Project Name'
-    //           width='150'
-    //         ></ColumnDirective>
+            <ColumnDirective
+              field="ProjectName"
+              headerText="Project Name"
+              width="150"
+            ></ColumnDirective>
 
-    //         <ColumnDirective
-    //           field='Status'
-    //           headerText='Status'
-    //           width='130'
-    //           format='yMd'
-    //           textAlign='Right'
-    //         />
-    //         <ColumnDirective
-    //           field='Weeks'
-    //           headerText='Weeks'
-    //           width='100'
-    //           format='C2'
-    //           textAlign='Right'
-    //         />
-    //         <ColumnDirective
-    //           field='Budget'
-    //           headerText='Budget'
-    //           width='100'
-    //           format='yMd'
-    //           textAlign='Right'
-    //         ></ColumnDirective>
-    //       </ColumnsDirective>
-    //       <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter]} />
-    //     </GridComponent>
-    //   </div>
-    // </div>
-
-    <div>Algo</div>
+            <ColumnDirective
+              field="Status"
+              headerText="Status"
+              width="130"
+              format="yMd"
+              textAlign="Right"
+            />
+            <ColumnDirective
+              field="Weeks"
+              headerText="Weeks"
+              width="100"
+              format="C2"
+              textAlign="Right"
+            />
+            <ColumnDirective
+              field="Budget"
+              headerText="Budget"
+              width="100"
+              format="yMd"
+              textAlign="Right"
+            ></ColumnDirective>
+          </ColumnsDirective>
+          <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter]} />
+        </GridComponent>
+      </div>
+    </div>
   );
 };
 export default Hoteles;

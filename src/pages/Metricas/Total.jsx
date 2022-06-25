@@ -10,8 +10,6 @@ import {
   Tooltip,
 } from "@syncfusion/ej2-react-charts";
 
-//
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Total = () => {
@@ -38,8 +36,6 @@ const Total = () => {
   useEffect(() => {
     obtenerDatos();
   }, []);
-
-  let menorValorHotel;
 
   const obtenerDatos = async () => {
     const data = await fetch(
