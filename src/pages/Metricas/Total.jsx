@@ -69,28 +69,28 @@ const Total = () => {
   };
   const lineChartData = [
     [
-      { x: new Date(2022, 1, 1), y: hotel1Mes1 },
-      { x: new Date(2022, 1, 15), y: hotel1Mes2 },
-      { x: new Date(2022, 2, 1), y: hotel1Mes3 },
-      { x: new Date(2022, 2, 15), y: hotel1Mes4 },
-    ],
-    [
-      { x: new Date(2022, 1, 1), y: hotel2Mes1 },
-      { x: new Date(2022, 1, 15), y: 8 },
-      { x: new Date(2022, 2, 1), y: hotel2Mes3 },
-      { x: new Date(2022, 2, 15), y: hotel2Mes3 },
-    ],
-    [
-      { x: new Date(2022, 1, 1), y: hotel3Mes3 },
+      { x: new Date(2022, 1, 1), y: 2 },
       { x: new Date(2022, 1, 15), y: 9 },
-      { x: new Date(2022, 2, 1), y: hotel3Mes3 },
-      { x: new Date(2022, 2, 15), y: hotel3Mes3 },
+      { x: new Date(2022, 2, 1), y: 1 },
+      { x: new Date(2022, 2, 15), y: 4 },
     ],
     [
-      { x: new Date(2022, 1, 1), y: hotel4Mes3 },
-      { x: new Date(2022, 1, 15), y: hotel4Mes3 },
-      { x: new Date(2022, 2, 1), y: hotel4Mes3 },
-      { x: new Date(2022, 2, 15), y: hotel4Mes3 },
+      { x: new Date(2022, 1, 1), y: 3 },
+      { x: new Date(2022, 1, 15), y: 5 },
+      { x: new Date(2022, 2, 1), y: 5 },
+      { x: new Date(2022, 2, 15), y: 6 },
+    ],
+    [
+      { x: new Date(2022, 1, 1), y: 5 },
+      { x: new Date(2022, 1, 15), y: 3 },
+      { x: new Date(2022, 2, 1), y: 8 },
+      { x: new Date(2022, 2, 15), y: 8 },
+    ],
+    [
+      { x: new Date(2022, 1, 1), y: 9 },
+      { x: new Date(2022, 1, 15), y: 2 },
+      { x: new Date(2022, 2, 1), y: 9 },
+      { x: new Date(2022, 2, 15), y: 6 },
     ],
   ];
   return (
@@ -107,11 +107,11 @@ const Total = () => {
             majorGridLines: { width: 0 },
           }}
           primaryYAxis={{
-            labelFormat: "{value}%",
+            labelFormat: "{value}",
             rangePadding: "None",
-            minimum: 4,
+            minimum: 0,
             maximum: 10,
-            interval: 7,
+            interval: 5,
             lineStyle: { width: 3 },
             majorTickLines: { width: 10 },
             minorTickLines: { width: 10 },
