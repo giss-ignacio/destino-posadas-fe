@@ -25,3 +25,8 @@ export async function login(email, password) {
   let body = { email: email, password: password };
   return sendRequest(`${url}/${usersRoute}/login`, "POST", body);
 }
+
+export async function register(email, name, password) {
+  let body = { nombre: name, email: email, password: password };
+  return sendRequest(`${url}/${usersRoute}`, "POST", body);
+}

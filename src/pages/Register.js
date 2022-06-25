@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Navigate } from "react-router-dom";
 import { emailValidator } from "./helpers/emailValidator";
 import { passwordValidator } from "./helpers/passwordValidator";
-import { login } from "../usersApi";
+import { register } from "../usersApi";
 import { useState, useEffect } from 'react';
 
 
@@ -34,7 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
+const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
   const [password, setPassword] = useState({value: ""});
   const [email, setEmail] = useState({value: ""});
 
@@ -43,7 +43,7 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
     setActiveNavBar(false);
 }, []);
 
-  async function loginConValidacionDatos(emailIn, paswordIn) {
+  async function registroConValidacionDatos(emailIn, nombreIn, paswordIn) {
     const emailError = emailValidator(emailIn);
     const passwordError = passwordValidator(paswordIn);
     if (emailError || passwordError) {
@@ -51,7 +51,7 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
       setPassword({ ...password, error: passwordError });
       return;
     }
-    onLoginExecute(emailIn, paswordIn);
+    onRegisterExecute(emailIn, nombreIn, paswordIn);
   }
 
   // const onLoginPressed = () => {
@@ -62,26 +62,26 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
   //     setPassword({ ...password, error: passwordError });
   //     return;
   //   }
-  //   onLoginExecute();
+  //   onLoginExcecute();
   // };
 
 
   let navigate = useNavigate(); 
 
-  async function onLoginExecute(emailIn, paswordIn) {
+  async function onRegisterExecute(emailIn, nombreIn, paswordIn) {
 
-    return login(emailIn, paswordIn)
+    return register(emailIn, nombreIn, paswordIn)
       .then((jsonResp) => {
         // token
         sessionStorage.setItem("_id", jsonResp.user._id);
-        sessionStorage.setItem("token", jsonResp.token);
         sessionStorage.setItem("email", emailIn);
+        sessionStorage.setItem("nombre", nombreIn);
         setActiveNavBar(true);
         setActiveMenu(true);
-        navigate("/resumen");
+        navigate("/login");
       })
       .catch((e) => {
-        alert("Credenciales inválidas");
+        //alert("Credenciales inválidas");
         //setPassword({ ...password, error: "Email o contraseña inválidos." });
       });
   }
@@ -97,9 +97,9 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
     }
     
     setEmail(data.get('email'));
-    setPassword(data.get('password'));    
-
-    loginConValidacionDatos(data.get('email'), data.get('password'));
+    setPassword(data.get('password'));
+    
+    registroConValidacionDatos(data.get('email'), data.get('nombre'), data.get('password'));
 
     if (!token) {
       //alert("Credenciales inválidas");
@@ -112,9 +112,7 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
 
   return (
     <>
-    
-    {token && <Navigate to={"/resumen"} />}
-    
+        
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -130,9 +128,19 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Ingresar
+            Crear cuenta
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="nombre"
+              label="Nombre y Apellido"
+              name="nombre"
+              autoComplete="nombre"
+              autoFocus
+            />
             <TextField
               margin="normal"
               required
@@ -153,10 +161,6 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Recordarme"
-            />
             <Button
               type="submit"
               onSubmit={handleSubmit}
@@ -164,7 +168,7 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Ingresar
+              Crear Cuenta
             </Button>
             <Grid container>
               <Grid item xs>
@@ -173,8 +177,8 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/registro" variant="body2">
-                  {"¿No tienes cuenta? Crear cuenta"}
+                <Link href="/login" variant="body2">
+                  {"¿Ya posee una cuenta? Ingresar"}
                 </Link>
               </Grid>
             </Grid>
@@ -187,4 +191,5 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
   );
 }
 
-export default SignIn;
+export default Register;
+

@@ -11,9 +11,9 @@ import {
   Sort,
   Filter,
 } from '@syncfusion/ej2-react-grids';
-import { customersData } from '../data/dummy';
+import { usersData } from '../data/dummy';
 
-const Hoteles = () => {
+const Usuarios = () => {
   let selectionsettings = { persistSelection: true };
   let toolbarOptions = ['Delete'];
   let editing = { allowDeleting: true, allowEditing: true };
@@ -38,7 +38,7 @@ const Hoteles = () => {
     <div className='control-pane md:m-10 m-4'>
       <div className='control-section'>
         <GridComponent
-          dataSource={customersData}
+          dataSource={usersData}
           enableHover={false}
           allowPaging={true}
           pageSettings={{ pageCount: 5 }}
@@ -90,4 +90,4 @@ const Hoteles = () => {
     </div>
   );
 };
-export default Hoteles;
+export default Usuarios;

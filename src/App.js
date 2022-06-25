@@ -4,9 +4,10 @@ import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-route
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
+import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
 import Calendario from "./pages/Calendario";
-import Hoteles from "./pages/Hoteles";
+import Usuarios from "./pages/Usuarios";
 import Tareas from "./pages/Tareas";
 
 import "./App.css";
@@ -55,10 +56,12 @@ const App = () => {
               <Route path="/" element={ navigateWithLogin(<Home />) } />
 
               <Route path="/login" element={<SignIn activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar} />} />
+              {/* <Route path="/registro" element={token ? ( <Navigate to="/resumen"/>) : (<Register activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />) } /> */}
 
+              <Route path="/registro" element={navigateWithLogin(<Register activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
               <Route path="/resumen" element={navigateWithLogin(<Home />)} />
               <Route path="/calendario" element={ navigateWithLogin(<Calendario/>)} />
-              <Route path="/hoteles" element={ navigateWithLogin(<Hoteles />)} />
+              <Route path="/usuarios" element={ navigateWithLogin(<Usuarios />)} />
               <Route path="/tareas" element={ navigateWithLogin(<Tareas />)} />
               <Route path="/editor" element={ navigateWithLogin(<Editor />)} />
 

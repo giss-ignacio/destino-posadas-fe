@@ -1,22 +1,15 @@
 import { AiOutlineCalendar } from "react-icons/ai";
 import {
-  FaBed,
-  FaDollarSign,
-  FaBusAlt,
-  FaGlobeAmericas,
-  FaThumbsUp,
-  FaInfo,
+  FaUsers,
   FaTrophy,
   FaThLarge,
   FaLayerGroup,
   FaBalanceScale,
-  FaHotel,
   FaWifi,
   FaWaveSquare,
 } from "react-icons/fa";
 import { FiEdit, FiActivity } from "react-icons/fi";
 import { BsKanban } from "react-icons/bs";
-import { RiContactsLine } from "react-icons/ri";
 
 export const links = [
   {
@@ -46,11 +39,11 @@ export const links = [
     ],
   },
   {
-    title: "Secciones",
+    title: "Administracion",
     links: [
       {
-        name: "hoteles",
-        icon: <FaHotel />,
+        name: "usuarios",
+        icon: <FaUsers />
       },
     ],
   },
