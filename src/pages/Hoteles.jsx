@@ -11,7 +11,7 @@ import {
   Sort,
   Filter,
 } from "@syncfusion/ej2-react-grids";
-import { customersData } from "../data/dummy";
+import { customersData } from "../data/Estructura";
 
 const Hoteles = () => {
   let selectionsettings = { persistSelection: true };

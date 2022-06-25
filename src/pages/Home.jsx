@@ -75,7 +75,7 @@ const Home = () => {
               <p className="font-bold text-gray-500">
                 Promedio habitación por noche
               </p>
-              <p className="text-2xl">{promedioPorNoche}$</p>
+              <p className="text-2xl">${promedioPorNoche}</p>
             </div>
             <button className="text-2xl bg-light-red opacity-0.9 text-white rounded-full  p-4">
               <BsCurrencyDollar />

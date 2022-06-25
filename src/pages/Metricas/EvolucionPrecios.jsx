@@ -11,7 +11,6 @@ import {
   Logarithmic,
   Crosshair,
 } from "@syncfusion/ej2-react-charts";
-// import { financialChartData } from "../../data/dummy";
 import { useEffect, useState } from "react";
 
 const EvolucionPrecios = () => {

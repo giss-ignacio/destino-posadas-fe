@@ -35,25 +35,25 @@ export const links = [
         name: "calendario",
         icon: <AiOutlineCalendar />,
       },
-      {
-        name: "tareas",
-        icon: <BsKanban />,
-      },
-      {
-        name: "editor",
-        icon: <FiEdit />,
-      },
+      // {
+      //   name: "tareas",
+      //   icon: <BsKanban />,
+      // },
+      // {
+      //   name: "editor",
+      //   icon: <FiEdit />,
+      // },
     ],
   },
-  {
-    title: "Secciones",
-    links: [
-      {
-        name: "hoteles",
-        icon: <FaHotel />,
-      },
-    ],
-  },
+  // {
+  //   title: "Secciones",
+  //   links: [
+  //     {
+  //       name: "hoteles",
+  //       icon: <FaHotel />,
+  //     },
+  //   ],
+  // },
   {
     title: "Metricas",
     links: [
