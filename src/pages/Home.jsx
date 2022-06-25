@@ -176,7 +176,7 @@ const Home = () => {
               height="450px"
             />
           </div>
-
+          {/* 
           <div className="bg-white rounded-xl w-400 p-8 m-3 flex justify-center items-center">
             <div>
               <p className="text-2xl font-semibold ">430.000.120,26</p>
@@ -186,7 +186,7 @@ const Home = () => {
             <div>
               <DoughnutChart />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

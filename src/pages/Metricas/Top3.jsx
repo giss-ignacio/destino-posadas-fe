@@ -126,7 +126,7 @@ const Top3 = () => {
           }}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
-          title="Top 3 - Mejores Hoteles"
+          title="Top 3 - Mejores Alojamientos"
         >
           <Inject
             services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}
