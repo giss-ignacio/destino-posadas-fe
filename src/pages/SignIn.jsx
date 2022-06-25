@@ -12,9 +12,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from "react-router-dom";
-
-
+import { useNavigate, Navigate } from "react-router-dom";
+import { emailValidator } from "./helpers/emailValidator";
+import { passwordValidator } from "./helpers/passwordValidator";
+import { login } from "../usersApi";
+import { useState, useEffect } from 'react';
 
 
 function Copyright(props) {
@@ -32,25 +34,93 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
+  const [password, setPassword] = useState({value: ""});
+  const [email, setEmail] = useState({value: ""});
+
+  useEffect(() => {
+    setActiveMenu(false);
+    setActiveNavBar(false);
+}, []);
+
+  // async function validarDatos() {
+  //   const emailError = emailValidator(email.value);
+  //   const passwordError = passwordValidator(password.value);
+  //   if (emailError || passwordError) {
+  //     setEmail({ ...email, error: emailError });
+  //     setPassword({ ...password, error: passwordError });
+  //     return;
+  //   }
+  //   onLoginExcecute();
+  // }
+
+  // const onLoginPressed = () => {
+  //   const emailError = emailValidator(email.value);
+  //   const passwordError = passwordValidator(password.value);
+  //   if (emailError || passwordError) {
+  //     setEmail({ ...email, error: emailError });
+  //     setPassword({ ...password, error: passwordError });
+  //     return;
+  //   }
+  //   onLoginExcecute();
+  // };
+
 
   let navigate = useNavigate(); 
+
+  async function onLoginExcecute(emailIn, paswordIn) {
+
+    return login(emailIn, paswordIn)
+      .then((jsonResp) => {
+        // token
+        sessionStorage.setItem("_id", jsonResp.user._id);
+        sessionStorage.setItem("token", jsonResp.token);
+        sessionStorage.setItem("email", emailIn);
+        setActiveNavBar(true);
+        setActiveMenu(true);
+        navigate("/resumen");
+      })
+      .catch((e) => {
+        alert("Credenciales inválidas");
+        //setPassword({ ...password, error: "Email o contraseña inválidos." });
+      });
+  }
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-    if (data.get('email') != "admin@gmail.com" && data.get('password') != "admin") {
-      alert("Credenciales inválidas");
+    const datos = {
+      email: { value: data.get('email') },
+      password:{ value: data.get('password') },
+    }
+    console.log(datos);
+
+    // const mockDatos = {
+    //   email: { value: "admin@gmail.com" },
+    //   password:{ value: "admin" },
+    // }
+    
+    setEmail(data.get('email'));
+    setPassword(data.get('password'));    
+
+    onLoginExcecute(data.get('email'), data.get('password'));
+
+    if (!token) {
+      //alert("Credenciales inválidas");
     } else {
       navigate('/resumen');
     }
   };
 
+  const token = sessionStorage.getItem("token");
+
   return (
+    <>
+    
+    {token && <Navigate to={"/resumen"} />}
+    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -95,6 +165,7 @@ export default function SignIn() {
             />
             <Button
               type="submit"
+              onSubmit={handleSubmit}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -118,5 +189,8 @@ export default function SignIn() {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+    </>
   );
 }
+
+export default SignIn;
