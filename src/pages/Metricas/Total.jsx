@@ -15,7 +15,84 @@ import { lineChartData } from "../../data/dummy";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Viajeros = () => {
+const Total = () => {
+  const [hotel1Mes1, setHotel1Mes1] = useState([]);
+  const [hotel1Mes2, setHotel1Mes2] = useState([]);
+  const [hotel1Mes3, setHotel1Mes3] = useState([]);
+  const [hotel1Mes4, setHotel1Mes4] = useState([]);
+
+  const [hotel2Mes1, setHotel2Mes1] = useState([]);
+  const [hotel2Mes2, setHotel2Mes2] = useState([]);
+  const [hotel2Mes3, setHotel2Mes3] = useState([]);
+  const [hotel2Mes4, setHotel2Mes4] = useState([]);
+
+  const [hotel3Mes1, setHotel3Mes1] = useState([]);
+  const [hotel3Mes2, setHotel3Mes2] = useState([]);
+  const [hotel3Mes3, setHotel3Mes3] = useState([]);
+  const [hotel3Mes4, setHotel3Mes4] = useState([]);
+
+  const [hotel4Mes1, setHotel4Mes1] = useState([]);
+  const [hotel4Mes2, setHotel4Mes2] = useState([]);
+  const [hotel4Mes3, setHotel4Mes3] = useState([]);
+  const [hotel4Mes4, setHotel4Mes4] = useState([]);
+
+  useEffect(() => {
+    obtenerDatos();
+  }, []);
+
+  const obtenerDatos = async () => {
+    const data = await fetch(
+      "http://localhost:3009/api/fedata/evolucionMensualPuntajes"
+    );
+    const data2 = await data.json();
+    const obj = data2[0];
+    // setMaxNov(obj.maxNov);
+    setHotel1Mes1(obj[0][0] / 1000);
+    setHotel1Mes2(obj[0][1] / 1000);
+    setHotel1Mes3(obj[0][10] / 1000);
+    setHotel1Mes4(obj[0][11] / 1000);
+
+    setHotel2Mes1(obj[0][0] / 1000);
+    setHotel2Mes2(obj[0][1] / 1000);
+    setHotel2Mes3(obj[0][10] / 1000);
+    setHotel2Mes4(obj[0][11] / 1000);
+
+    setHotel3Mes1(obj[0][0] / 1000);
+    setHotel3Mes2(obj[0][1] / 1000);
+    setHotel3Mes3(obj[0][10] / 1000);
+    setHotel3Mes4(obj[0][11] / 1000);
+
+    setHotel4Mes1(obj[0][0] / 1000);
+    setHotel4Mes2(obj[0][1] / 1000);
+    setHotel4Mes3(obj[0][10] / 1000);
+    setHotel4Mes4(obj[0][11] / 1000);
+  };
+  const lineChartData = [
+    [
+      { x: new Date(2022, 1, 1), y: hotel1Mes1 },
+      { x: new Date(2022, 1, 15), y: hotel1Mes2 },
+      { x: new Date(2022, 2, 1), y: hotel1Mes3 },
+      { x: new Date(2022, 2, 15), y: hotel1Mes4 },
+    ],
+    [
+      { x: new Date(2022, 1, 1), y: hotel2Mes1 },
+      { x: new Date(2022, 1, 15), y: 8 },
+      { x: new Date(2022, 2, 1), y: hotel2Mes3 },
+      { x: new Date(2022, 2, 15), y: hotel2Mes3 },
+    ],
+    [
+      { x: new Date(2022, 1, 1), y: hotel3Mes3 },
+      { x: new Date(2022, 1, 15), y: 9 },
+      { x: new Date(2022, 2, 1), y: hotel3Mes3 },
+      { x: new Date(2022, 2, 15), y: hotel3Mes3 },
+    ],
+    [
+      { x: new Date(2022, 1, 1), y: hotel4Mes3 },
+      { x: new Date(2022, 1, 15), y: hotel4Mes3 },
+      { x: new Date(2022, 2, 1), y: hotel4Mes3 },
+      { x: new Date(2022, 2, 15), y: hotel4Mes3 },
+    ],
+  ];
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20 ">
       <div className="w-full">
@@ -32,9 +109,9 @@ const Viajeros = () => {
           primaryYAxis={{
             labelFormat: "{value}%",
             rangePadding: "None",
-            minimum: 0,
-            maximum: 100,
-            interval: 20,
+            minimum: 4,
+            maximum: 10,
+            interval: 7,
             lineStyle: { width: 3 },
             majorTickLines: { width: 10 },
             minorTickLines: { width: 10 },
@@ -58,7 +135,25 @@ const Viajeros = () => {
               dataSource={lineChartData[1]}
               xName="x"
               yName="y"
-              name="Apart"
+              name="Residencial"
+              width={10}
+              marker={{ visible: true, width: 10, height: 10 }}
+              type="Line"
+            ></SeriesDirective>
+            <SeriesDirective
+              dataSource={lineChartData[2]}
+              xName="x"
+              yName="y"
+              name="Apart Hotel"
+              width={10}
+              marker={{ visible: true, width: 10, height: 10 }}
+              type="Line"
+            ></SeriesDirective>
+            <SeriesDirective
+              dataSource={lineChartData[3]}
+              xName="x"
+              yName="y"
+              name="Hostería"
               width={10}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
@@ -70,4 +165,4 @@ const Viajeros = () => {
   );
 };
 
-export default Viajeros;
+export default Total;
