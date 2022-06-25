@@ -11,6 +11,10 @@ const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
   const [totalOpiniones, setTotalOpiniones] = useState([]);
   const [cantidadAlojamientos, setCantidadAlojamientos] = useState([]);
+  const [dolar, setDolar] = useState([]);
+  const [dolarOficial, setDolarOficial] = useState([]);
+  const [euro, setEuro] = useState([]);
+  const [euroOficial, setEuroOficial] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
@@ -41,6 +45,14 @@ const Home = () => {
       data3[0].HosteriasCant;
 
     setCantidadAlojamientos(cantidadAlojamientos);
+
+    //dolar
+    const cotizaciones = await fetch("https://api.bluelytics.com.ar/v2/latest");
+    const objCotizaciones = await cotizaciones.json();
+    setDolar(objCotizaciones.blue.value_avg);
+    setDolarOficial(objCotizaciones.oficial.value_avg);
+    setEuro(objCotizaciones.oficial_euro.value_avg);
+    setEuroOficial(objCotizaciones.blue_euro.value_avg);
   };
 
   return (
@@ -129,10 +141,18 @@ const Home = () => {
                 </p>
                 {/* <p className="text-gray-500 mt-1">Cantidad de atractivos</p> */}
               </div>
-              <div className="mt-8">
-                <p className="text-3xl font-semibold">109.872</p>
-
-                <p className="text-gray-500 mt-1">Cantidad de valoraciones</p>
+              <div className="mt-1">
+                <p className="text-gray-500 mt-1">Precio Dolar Oficial</p>
+                <p className="text-3xl font-semibold">${dolarOficial}</p>
+                <br />
+                <p className="text-gray-500 mt-1">Precio Dolar Blue</p>
+                <p className="text-3xl font-semibold">${dolar}</p>
+                <br />
+                <p className="text-gray-500 mt-1">Precio Euro Oficial</p>
+                <p className="text-3xl font-semibold">${euroOficial}</p>
+                <br />
+                <p className="text-gray-500 mt-1">Precio Euro Blue</p>
+                <p className="text-3xl font-semibold">${euro}</p>
               </div>
               <div className="mt-10">
                 {/* <button className="bg-light-blue p-2 pl-3 pr-3 text-white rounded-md mt-6">
