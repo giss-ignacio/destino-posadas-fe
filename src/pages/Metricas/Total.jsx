@@ -9,7 +9,6 @@ import {
   Legend,
   Tooltip,
 } from "@syncfusion/ej2-react-charts";
-import { lineChartData } from "../../data/dummy";
 
 //
 import axios from "axios";
@@ -40,6 +39,8 @@ const Total = () => {
     obtenerDatos();
   }, []);
 
+  let menorValorHotel;
+
   const obtenerDatos = async () => {
     const data = await fetch(
       "http://localhost:3009/api/fedata/evolucionMensualPuntajes"
@@ -47,52 +48,53 @@ const Total = () => {
     const data2 = await data.json();
     const obj = data2[0];
     // setMaxNov(obj.maxNov);
-    setHotel1Mes1(obj[0][0] / 1000);
-    setHotel1Mes2(obj[0][1] / 1000);
-    setHotel1Mes3(obj[0][10] / 1000);
-    setHotel1Mes4(obj[0][11] / 1000);
+    setHotel1Mes1(obj[0][10]);
+    setHotel1Mes2(obj[0][11]);
+    setHotel1Mes3(obj[0][0]);
+    setHotel1Mes4(obj[0][1]);
 
-    setHotel2Mes1(obj[0][0] / 1000);
-    setHotel2Mes2(obj[0][1] / 1000);
-    setHotel2Mes3(obj[0][10] / 1000);
-    setHotel2Mes4(obj[0][11] / 1000);
+    setHotel2Mes1(obj[1][10]);
+    setHotel2Mes2(obj[1][11]);
+    setHotel2Mes3(obj[1][0]);
+    setHotel2Mes4(obj[1][1]);
 
-    setHotel3Mes1(obj[0][0] / 1000);
-    setHotel3Mes2(obj[0][1] / 1000);
-    setHotel3Mes3(obj[0][10] / 1000);
-    setHotel3Mes4(obj[0][11] / 1000);
+    setHotel3Mes1(obj[2][10]);
+    setHotel3Mes2(obj[2][11]);
+    setHotel3Mes3(obj[2][0]);
+    setHotel3Mes4(obj[2][1]);
 
-    setHotel4Mes1(obj[0][0] / 1000);
-    setHotel4Mes2(obj[0][1] / 1000);
-    setHotel4Mes3(obj[0][10] / 1000);
-    setHotel4Mes4(obj[0][11] / 1000);
+    setHotel4Mes1(obj[3][10]);
+    setHotel4Mes2(obj[3][11]);
+    setHotel4Mes3(obj[3][0]);
+    setHotel4Mes4(obj[3][1]);
   };
   const lineChartData = [
     [
-      { x: new Date(2022, 1, 1), y: 2 },
-      { x: new Date(2022, 1, 15), y: 9 },
-      { x: new Date(2022, 2, 1), y: 1 },
-      { x: new Date(2022, 2, 15), y: 4 },
+      { x: new Date(2021, 11, 1), y: hotel1Mes1 },
+      { x: new Date(2021, 11, 30), y: hotel1Mes2 },
+      { x: new Date(2022, 1, 1), y: hotel1Mes3 },
+      { x: new Date(2022, 2, 1), y: hotel1Mes4 },
     ],
     [
-      { x: new Date(2022, 1, 1), y: 3 },
-      { x: new Date(2022, 1, 15), y: 5 },
-      { x: new Date(2022, 2, 1), y: 5 },
-      { x: new Date(2022, 2, 15), y: 6 },
+      { x: new Date(2021, 11, 1), y: hotel2Mes1 },
+      { x: new Date(2021, 11, 30), y: hotel2Mes2 }, //no hay dato, repito el anterior
+      { x: new Date(2022, 1, 1), y: hotel2Mes3 },
+      { x: new Date(2022, 2, 1), y: hotel2Mes4 },
     ],
     [
-      { x: new Date(2022, 1, 1), y: 5 },
-      { x: new Date(2022, 1, 15), y: 3 },
-      { x: new Date(2022, 2, 1), y: 8 },
-      { x: new Date(2022, 2, 15), y: 8 },
+      { x: new Date(2021, 11, 1), y: hotel3Mes1 },
+      { x: new Date(2021, 11, 30), y: hotel3Mes2 },
+      { x: new Date(2022, 1, 1), y: hotel3Mes3 },
+      { x: new Date(2022, 2, 1), y: hotel3Mes4 },
     ],
     [
-      { x: new Date(2022, 1, 1), y: 9 },
-      { x: new Date(2022, 1, 15), y: 2 },
-      { x: new Date(2022, 2, 1), y: 9 },
-      { x: new Date(2022, 2, 15), y: 6 },
+      { x: new Date(2021, 11, 1), y: hotel4Mes1 },
+      { x: new Date(2021, 11, 30), y: hotel4Mes2 },
+      { x: new Date(2022, 1, 1), y: hotel4Mes3 },
+      { x: new Date(2022, 2, 1), y: hotel4Mes4 },
     ],
   ];
+
   return (
     <div className="md:m-10 m-4 md:mt-40 mt-20 ">
       <div className="w-full">
@@ -102,17 +104,17 @@ const Total = () => {
           primaryXAxis={{
             valueType: "DateTime",
             labelFormat: "y",
-            intervalType: "Years",
+            intervalType: "Months",
             edgeLabelPlacement: "Shift",
             majorGridLines: { width: 0 },
           }}
           primaryYAxis={{
             labelFormat: "{value}",
             rangePadding: "None",
-            minimum: 0,
-            maximum: 10,
+            minimum: 7,
+            maximum: 9,
             interval: 5,
-            lineStyle: { width: 3 },
+            lineStyle: { width: 5 },
             majorTickLines: { width: 10 },
             minorTickLines: { width: 10 },
           }}
@@ -127,7 +129,7 @@ const Total = () => {
               xName="x"
               yName="y"
               name="Hotel"
-              width={10}
+              width={5}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
             ></SeriesDirective>
@@ -136,7 +138,7 @@ const Total = () => {
               xName="x"
               yName="y"
               name="Residencial"
-              width={10}
+              width={5}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
             ></SeriesDirective>
@@ -145,7 +147,7 @@ const Total = () => {
               xName="x"
               yName="y"
               name="Apart Hotel"
-              width={10}
+              width={5}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
             ></SeriesDirective>
@@ -154,7 +156,7 @@ const Total = () => {
               xName="x"
               yName="y"
               name="Hostería"
-              width={10}
+              width={5}
               marker={{ visible: true, width: 10, height: 10 }}
               type="Line"
             ></SeriesDirective>
