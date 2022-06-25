@@ -105,6 +105,14 @@ const Distribucion = () => {
             ></AccumulationSeriesDirective>
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
+
+        <div>
+          <br />
+          <h1>
+            Muestra la cantidad y el porcentaje de cada tipo de alojamiento de
+            Posadas.
+          </h1>
+        </div>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ import Distribucion from "./pages/Metricas/Distribucion";
 import EvolucionPrecios from "./pages/Metricas/Evolucion Precios";
 import Promedio from "./pages/Metricas/Promedio";
 import Editor from "./pages/Editor";
-
+import EvolucionUbicacion from "./pages/Metricas/Evolucion Ubicacion";
 const App = () => {
   const [activeMenu, setActiveMenu] = useState(true);
 
@@ -62,6 +62,10 @@ const App = () => {
               <Route
                 path="/Evolucion%20Precios"
                 element={<EvolucionPrecios />}
+              />
+              <Route
+                path="/Evolucion%20Ubicacion"
+                element={<EvolucionUbicacion />}
               />
               <Route path="/promedio" element={<Promedio />} />
             </Routes>

@@ -221,6 +221,14 @@ const Top3 = () => {
             ></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
+
+        <div>
+          <br />
+          <h1>
+            Detalla el puntaje de cada una de las categorías de los tres mejores
+            alojamientos de Posadas.
+          </h1>
+        </div>
       </div>
     </div>
   );

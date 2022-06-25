@@ -12,7 +12,7 @@ import {
 
 import { useEffect, useState } from "react";
 
-const EvolucionPuntajes = () => {
+const EvolucionUbicacion = () => {
   const [hotel1Mes1, setHotel1Mes1] = useState([]);
   const [hotel1Mes2, setHotel1Mes2] = useState([]);
   const [hotel1Mes3, setHotel1Mes3] = useState([]);
@@ -39,7 +39,7 @@ const EvolucionPuntajes = () => {
 
   const obtenerDatos = async () => {
     const data = await fetch(
-      "http://localhost:3009/api/fedata/evolucionMensualPorConcepto?concepto=Puntuacion"
+      "http://localhost:3009/api/fedata/evolucionMensualPorConcepto?concepto=Ubicacion"
     );
     const data2 = await data.json();
     const obj = data2[0];
@@ -116,7 +116,7 @@ const EvolucionPuntajes = () => {
           }}
           chartArea={{ border: { width: 1 } }}
           tooltip={{ enable: true }}
-          title="Puntuación según tipo de alojamiento"
+          title="Puntuación de la ubicación según tipo de alojamiento"
         >
           <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
           <SeriesCollectionDirective>
@@ -164,7 +164,7 @@ const EvolucionPuntajes = () => {
             Un gráfico que muestra la fluctuación de los últimos 4 meses en
             escala del 0 al 10 para los distintos tipos de alojamiento. De esa
             forma se puede monitorear rápidamente a nivel general cómo puntúa
-            cada tipo de alojamiento.
+            cada tipo de alojamiento según el puntaje de ubicación.
           </h1>
         </div>
       </div>
@@ -172,4 +172,4 @@ const EvolucionPuntajes = () => {
   );
 };
 
-export default EvolucionPuntajes;
+export default EvolucionUbicacion;

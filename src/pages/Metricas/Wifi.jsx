@@ -36,7 +36,7 @@ const Wifi = () => {
 
   const obtenerDatos = async () => {
     const data = await fetch(
-      "http://localhost:3009/api/fedata/serviciosHistorico"
+      "http://localhost:3009/api/fedata/evolucionMensualPorConcepto?concepto=WiFi"
     );
     const data2 = await data.json();
     let obj = data2[0];
@@ -107,7 +107,7 @@ const Wifi = () => {
           primaryYAxis={{
             labelFormat: "{value}",
             lineStyle: { width: 0 },
-            minimum: 0,
+            minimum: 6,
             maximum: 10,
             interval: 1,
             majorTickLines: { width: 0 },
@@ -156,6 +156,13 @@ const Wifi = () => {
             ></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
+        <div>
+          <br />
+          <h1>
+            Detalla la fluctuación del promedio del puntaje de wifi, según el
+            tipo de alojamiento.
+          </h1>
+        </div>
       </div>
     </div>
   );

@@ -2,10 +2,11 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import {
   FaTrophy,
   FaThLarge,
-  FaLayerGroup,
+  FaChartLine,
   FaBalanceScale,
   FaWifi,
   FaWaveSquare,
+  FaMapPin,
 } from "react-icons/fa";
 import { FiActivity } from "react-icons/fi";
 
@@ -72,7 +73,11 @@ export const links = [
       },
       {
         name: "Evolucion Puntajes",
-        icon: <FaLayerGroup />,
+        icon: <FaChartLine />,
+      },
+      {
+        name: "Evolucion Ubicacion",
+        icon: <FaMapPin />,
       },
     ],
   },
