@@ -9,11 +9,11 @@ import Hoteles from "./pages/Hoteles";
 import Tareas from "./pages/Tareas";
 
 import "./App.css";
-import Total from "./pages/Metricas/Total";
+import EvolucionPuntajes from "./pages/Metricas/Evolucion Puntajes";
 import Wifi from "./pages/Metricas/Wifi";
 import Top3 from "./pages/Metricas/Top3";
 import Distribucion from "./pages/Metricas/Distribucion";
-import EvolucionPrecios from "./pages/Metricas/EvolucionPrecios";
+import EvolucionPrecios from "./pages/Metricas/Evolucion Precios";
 import Promedio from "./pages/Metricas/Promedio";
 import Editor from "./pages/Editor";
 
@@ -52,11 +52,17 @@ const App = () => {
               <Route path="/tareas" element={<Tareas />} />
               <Route path="/editor" element={<Editor />} />
 
-              <Route path="/total" element={<Total />} />
+              <Route
+                path="/Evolucion%20puntajes"
+                element={<EvolucionPuntajes />}
+              />
               <Route path="/Distribucion" element={<Distribucion />} />
               <Route path="/top%203" element={<Top3 />} />
               <Route path="/Wifi" element={<Wifi />} />
-              <Route path="/evolucionPrecios" element={<EvolucionPrecios />} />
+              <Route
+                path="/Evolucion%20Precios"
+                element={<EvolucionPrecios />}
+              />
               <Route path="/promedio" element={<Promedio />} />
             </Routes>
           </div>

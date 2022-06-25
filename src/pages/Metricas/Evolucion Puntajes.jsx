@@ -12,7 +12,7 @@ import {
 
 import { useEffect, useState } from "react";
 
-const Total = () => {
+const EvolucionPuntajes = () => {
   const [hotel1Mes1, setHotel1Mes1] = useState([]);
   const [hotel1Mes2, setHotel1Mes2] = useState([]);
   const [hotel1Mes3, setHotel1Mes3] = useState([]);
@@ -163,4 +163,4 @@ const Total = () => {
   );
 };
 
-export default Total;
+export default EvolucionPuntajes;

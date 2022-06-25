@@ -67,11 +67,11 @@ export const links = [
         icon: <FaWifi />,
       },
       {
-        name: "EvolucionPrecios",
+        name: "Evolucion Precios",
         icon: <FaWaveSquare />,
       },
       {
-        name: "total",
+        name: "Evolucion Puntajes",
         icon: <FaLayerGroup />,
       },
     ],
