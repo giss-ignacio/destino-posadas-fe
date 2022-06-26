@@ -7,7 +7,6 @@ import { HiOutlineRefresh } from "react-icons/hi";
 import StackedChart from "../components/StackedChart";
 import { useEffect, useState } from "react";
 
-
 const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
   const [totalOpiniones, setTotalOpiniones] = useState([]);
@@ -77,7 +76,7 @@ const Home = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-gray-500">
-                Promedio habitación por noche
+                Precio promedio de habitación por noche
               </p>
               <p className="text-2xl">${promedioPorNoche}</p>
             </div>
@@ -123,9 +122,12 @@ const Home = () => {
           <div className="bg-white w-56 p-4 rounded-r-2xl border-r-1 border-color">
             <button
               onClick={() => [
-
-                setFecha(new Date().getDate() +"/"
-                +(new Date().getMonth()+1) + "/" + new Date().getFullYear()
+                setFecha(
+                  new Date().getDate() +
+                    "/" +
+                    (new Date().getMonth() + 1) +
+                    "/" +
+                    new Date().getFullYear()
                 ),
                 cons(),
               ]}
@@ -138,7 +140,7 @@ const Home = () => {
               <span className="text-lg font-semibold">{fecha}</span>
             </p>
             <p className="text-sm text-gray-500 mt-1">
-              Mes de última actualización
+              Fecha de última actualización
             </p>
           </div>
         </div>
