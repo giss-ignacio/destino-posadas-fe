@@ -84,7 +84,7 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
             <span className="text-light-blue font-bold ml-1">
               {" "}
               {
-                sessionStorage.getItem("nombre").charAt(0).toUpperCase() + sessionStorage.getItem("nombre").slice(1)
+                sessionStorage.getItem("nombre") ?  sessionStorage.getItem("nombre").charAt(0).toUpperCase() + sessionStorage.getItem("nombre").slice(1) : "Administrador"
               }{" "}
             </span>
           </p>
