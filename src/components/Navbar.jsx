@@ -83,7 +83,9 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
             <span className="text-gray-400">Hola,</span>{" "}
             <span className="text-light-blue font-bold ml-1">
               {" "}
-              Administrador{" "}
+              {
+                sessionStorage.getItem("nombre").charAt(0).toUpperCase() + sessionStorage.getItem("nombre").slice(1)
+              }{" "}
             </span>
           </p>
           <MdKeyboardArrowDown className="text-light-blue text-xl" />

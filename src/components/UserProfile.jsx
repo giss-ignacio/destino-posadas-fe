@@ -33,10 +33,10 @@ const UserProfile = ({ setUserProfile }) => {
           height="50px"
         />
         <div>
-          <p className="font-semibold text-xl">Administrador</p>
-          <p className="text-gray-500 text-sm">Administrador</p>
+          <p className="font-semibold text-xl">{sessionStorage.getItem("nombre").charAt(0).toUpperCase() + sessionStorage.getItem("nombre").slice(1)}</p>
+          <p className="text-gray-500 text-sm">{sessionStorage.getItem("nombre").charAt(0).toUpperCase() + sessionStorage.getItem("nombre").slice(1)}</p>
           <p className="text-gray-500 text-sm font-semibold">
-            admin@destino-posadas.com
+            {sessionStorage.getItem("email")}
           </p>
         </div>
       </div>
