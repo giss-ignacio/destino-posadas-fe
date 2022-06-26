@@ -27,7 +27,6 @@ const Calendario = () => {
   const onDragStart = (args) => {
     args.navigation.enable = true;
   };
-  console.log(scheduleObj);
   return (
     <div className="schedule-control-section m-4 md:m-10 mt-20 md:mt-40">
       <div className="mt-10 mb-10">
