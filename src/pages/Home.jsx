@@ -55,31 +55,19 @@ const Home = () => {
     setDolarOficial(objCotizaciones.oficial.value_avg);
     setEuro(objCotizaciones.oficial_euro.value_avg);
     setEuroOficial(objCotizaciones.blue_euro.value_avg);
+  };
 
-    //getDay
-    const d_t = new Date().getDate;
+  const cons = () => {
+    console.log("MM");
+    var requestOptions = {
+      method: "POST",
+      redirect: "follow",
+    };
 
-    let year = d_t.getFullYear();
-    let month = d_t.getMonth();
-    let day = d_t.getDate();
-    // let hour = d_t.getHours();
-
-    console.log("hora?", day);
-
-    function padTo2Digits(num) {
-      return num.toString().padStart(2, "0");
-    }
-
-    function formatDate(date) {
-      return [
-        padTo2Digits(date.getDate()),
-        padTo2Digits(date.getMonth() + 1),
-        date.getFullYear(),
-      ].join("/");
-    }
-
-    // 👇️ 24/10/2021 (mm/dd/yyyy)
-    console.log(formatDate(new Date()));
+    fetch("http://localhost:3009/api/loader/subirData", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   return (
@@ -134,7 +122,7 @@ const Home = () => {
           </div>
           <div className="bg-white w-56 p-4 rounded-r-2xl border-r-1 border-color">
             <button
-              onClick={() =>
+              onClick={() => [
                 // fetch("http://localhost:3009/api/booking/subirData", {
                 //   method: "POST",
                 //   redirect: "follow",
@@ -145,8 +133,9 @@ const Home = () => {
 
                 setFecha(
                   new Date().getMonth() + 1 + "/" + new Date().getFullYear()
-                )
-              }
+                ),
+                cons(),
+              ]}
               className="text-2xl text-icon-light-green bg-icon-light-green opacity-0.9 rounded-full  p-4"
             >
               <HiOutlineRefresh />
