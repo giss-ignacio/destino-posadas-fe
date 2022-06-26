@@ -48,8 +48,7 @@ const Top3 = () => {
     const data2 = await data.json();
 
     let mostrar = data2[0];
-    console.log(mostrar.hotel1.total);
-    //seteo
+
     setPersonalHotel1(mostrar.hotel1.personal);
     setLimpiezaHotel1(mostrar.hotel1.limpieza);
     setPrecioCalidadHotel1(mostrar.hotel1.precioCalidad);

@@ -7,6 +7,7 @@ import { HiOutlineRefresh } from "react-icons/hi";
 import StackedChart from "../components/StackedChart";
 import { useEffect, useState } from "react";
 
+
 const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
   const [totalOpiniones, setTotalOpiniones] = useState([]);
@@ -58,7 +59,6 @@ const Home = () => {
   };
 
   const cons = () => {
-    console.log("MM");
     var requestOptions = {
       method: "POST",
       redirect: "follow",
@@ -123,16 +123,9 @@ const Home = () => {
           <div className="bg-white w-56 p-4 rounded-r-2xl border-r-1 border-color">
             <button
               onClick={() => [
-                // fetch("http://localhost:3009/api/booking/subirData", {
-                //   method: "POST",
-                //   redirect: "follow",
-                // })
-                //   .then((response) => response.text())
-                //   .then((result) => console.log(result))
-                //   .catch((error) => console.log("error", error)),
 
-                setFecha(
-                  new Date().getMonth() + 1 + "/" + new Date().getFullYear()
+                setFecha(new Date().getDate() +"/"
+                +(new Date().getMonth()+1) + "/" + new Date().getFullYear()
                 ),
                 cons(),
               ]}
