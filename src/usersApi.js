@@ -30,3 +30,7 @@ export async function register(email, name, password) {
   let body = { nombre: name, email: email, password: password };
   return sendRequest(`${url}/${usersRoute}`, "POST", body);
 }
+
+export async function getUsers() {
+  return sendRequest(`${url}/${usersRoute}`, "GET", null);
+}

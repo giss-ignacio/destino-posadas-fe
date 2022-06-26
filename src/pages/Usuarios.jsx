@@ -11,9 +11,16 @@ import {
   Sort,
   Filter,
 } from '@syncfusion/ej2-react-grids';
-import { usersData } from '../data/dummy';
+import { FaUserPlus } from 'react-icons/fa';
+import { useNavigate, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUsers } from "../usersApi";
 
-const Usuarios = () => {
+
+const Usuarios = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
+  
+  const [usersData, setUsersData] = useState([]);
+
   let selectionsettings = { persistSelection: true };
   let toolbarOptions = ['Delete'];
   let editing = { allowDeleting: true, allowEditing: true };
@@ -22,22 +29,86 @@ const Usuarios = () => {
       <div className='image flex gap-4'>
         <img
           className='rounded-full w-10 h-10'
-          src={props.CustomerImage}
+          src={props.UserImage}
           alt='employee'
         />
         <div>
-          <p>{props.CustomerName}</p>
+          <p>{props.UserName}</p>
 
-          <p>{props.CustomerEmail}</p>
+          <p>{props.UserEmail}</p>
         </div>
       </div>
     );
   };
 
+  let navigate = useNavigate(); 
+  const routeRegister = () =>{ 
+    navigate('/registro');
+  }
+
+  useEffect(() => {
+    setActiveMenu(true);
+    setActiveNavBar(true);
+
+    obtenerDatos();
+  }, []);
+
+  
+  const obtenerDatos = async () => {
+    let modUsersData = [];
+    getUsers().then((jsonResp) => {
+        console.log(jsonResp);
+        jsonResp.forEach(user => {
+          modUsersData.push(
+            {
+              UserName: user.nombre,
+              UserEmail: user.email,
+              UserImage:
+                "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+              ProjectName: "Hosting Press HTML",
+              Role: user.rol,
+              Status: "Active",
+              Weeks: "40",
+              Budget: "$2.4k",
+            })
+
+        console.log(usersData);
+        setUsersData([...usersData, ...modUsersData]);
+      })
+    })
+      .catch((e) => {
+        //alert("Credenciales inválidas");
+        //setPassword({ ...password, error: "Email o contraseña inválidos." });
+      });
+
+      
+  };
+
   return (
     <div className='control-pane md:m-10 m-4'>
+
+<div className="flex m-3 flex-wrap justify-left">
+    <div >
+              <p className="text-lg">Agregar Usuario  </p>
+            </div>
+            <button className="text-lg bg-light-red opacity-0.9 text-white rounded-full  p-4">
+              <FaUserPlus  onClick={routeRegister} />
+            </button>
+            
+          <div className="w-56 p-4 ">
+           
+          </div>{" "}
+          <div className=" w-56 p-4 ">
+            
+          </div>
+          <div className=" w-56 p-4 rounded-r-lg" >
+            
+          </div>
+        </div>
+
+
       <div className='control-section'>
-        <GridComponent
+        { usersData.length != 0 && <GridComponent
           dataSource={usersData}
           enableHover={false}
           allowPaging={true}
@@ -50,18 +121,19 @@ const Usuarios = () => {
             <ColumnDirective type='checkbox' width='50'></ColumnDirective>
 
             <ColumnDirective
-              headerText='Customer'
+              headerText='Usuario'
               width='180'
               template={gridTemplate}
               textAlign='Center'
             />
 
             <ColumnDirective
-              field='ProjectName'
-              headerText='Project Name'
-              width='150'
-            ></ColumnDirective>
-
+              field='Role'
+              headerText='Rol'
+              width='130'
+              format='yMd'
+              textAlign='Center'
+            />
             <ColumnDirective
               field='Status'
               headerText='Status'
@@ -69,23 +141,9 @@ const Usuarios = () => {
               format='yMd'
               textAlign='Right'
             />
-            <ColumnDirective
-              field='Weeks'
-              headerText='Weeks'
-              width='100'
-              format='C2'
-              textAlign='Right'
-            />
-            <ColumnDirective
-              field='Budget'
-              headerText='Budget'
-              width='100'
-              format='yMd'
-              textAlign='Right'
-            ></ColumnDirective>
           </ColumnsDirective>
           <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter]} />
-        </GridComponent>
+        </GridComponent>}
       </div>
     </div>
   );

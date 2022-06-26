@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -69,21 +68,17 @@ const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
   let navigate = useNavigate(); 
 
   async function onRegisterExecute(emailIn, nombreIn, paswordIn) {
-
+    setActiveNavBar(true);
+    setActiveMenu(true);
     return register(emailIn, nombreIn, paswordIn)
       .then((jsonResp) => {
         // token
-        sessionStorage.setItem("_id", jsonResp.user._id);
-        sessionStorage.setItem("email", emailIn);
-        sessionStorage.setItem("nombre", nombreIn);
-        setActiveNavBar(true);
-        setActiveMenu(true);
-        navigate("/login");
       })
       .catch((e) => {
         //alert("Credenciales inválidas");
         //setPassword({ ...password, error: "Email o contraseña inválidos." });
       });
+
   }
 
 
@@ -104,7 +99,7 @@ const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
     if (!token) {
       //alert("Credenciales inválidas");
     } else {
-      navigate('/resumen');
+      navigate('/usuarios');
     }
   };
 

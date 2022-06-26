@@ -61,7 +61,7 @@ const App = () => {
               <Route path="/registro" element={navigateWithLogin(<Register activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
               <Route path="/resumen" element={navigateWithLogin(<Home />)} />
               <Route path="/calendario" element={ navigateWithLogin(<Calendario/>)} />
-              <Route path="/usuarios" element={ navigateWithLogin(<Usuarios />)} />
+              <Route path="/usuarios" element={ navigateWithLogin(<Usuarios activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
               <Route path="/tareas" element={ navigateWithLogin(<Tareas />)} />
               <Route path="/editor" element={ navigateWithLogin(<Editor />)} />
 
