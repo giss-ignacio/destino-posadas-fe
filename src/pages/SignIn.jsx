@@ -68,7 +68,10 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
         // token
         sessionStorage.setItem("_id", jsonResp.user._id);
         sessionStorage.setItem("token", jsonResp.token);
+        sessionStorage.setItem("rol", jsonResp.user.rol);
         sessionStorage.setItem("email", emailIn);
+        sessionStorage.setItem("nombre", emailIn.split("@")[0]); // modificar el backend para devolver el nombre
+        
         setActiveNavBar(true);
         setActiveMenu(true);
         navigate("/resumen");

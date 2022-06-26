@@ -33,7 +33,9 @@ const Sidebar = ({ activeMenu }) => {
             <span className="text-xl font-bold">Destino Posadas</span>
           </Link>
           <div className="mt-10 ">
-            {links.map((item) => (
+            {links
+            .filter( (item) => (sessionStorage.getItem("rol") == "administrador") || (item.title != "Administracion") )              
+            .map((item) => (
               <div>
                 <p className="text-gray-400 m-3 mt-4 uppercase">{item.title}</p>
                 {item.links.map((link) => (
