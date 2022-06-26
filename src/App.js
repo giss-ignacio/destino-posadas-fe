@@ -19,13 +19,24 @@ import EvolucionPrecios from "./pages/Metricas/Evolucion Precios";
 import Promedio from "./pages/Metricas/Promedio";
 import Editor from "./pages/Editor";
 import EvolucionUbicacion from "./pages/Metricas/Evolucion Ubicacion";
+import jwt_decode from "jwt-decode";
+
 const App = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [activeNavBar, setActiveNavBar] = useState(true);
   const token = sessionStorage.getItem("token");
 
   function navigateWithLogin(component) {
-    return  token ? (component):( <Navigate to="/login"/>)
+    let currentDate = new Date();
+    let isExpired = true;
+
+    if (token) {
+      isExpired = jwt_decode(token) * 1000 < currentDate.getTime() ;
+    }     
+
+    let isValidToken = token && !isExpired;
+
+    return  isValidToken ? (component):( <Navigate to="/login"/>)
   }
 
   return (

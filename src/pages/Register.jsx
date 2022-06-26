@@ -16,6 +16,9 @@ import { emailValidator } from "./helpers/emailValidator";
 import { passwordValidator } from "./helpers/passwordValidator";
 import { register } from "../usersApi";
 import { useState, useEffect } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function Copyright(props) {
@@ -36,6 +39,7 @@ const theme = createTheme();
 const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
   const [password, setPassword] = useState({value: ""});
   const [email, setEmail] = useState({value: ""});
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     setActiveMenu(false);
@@ -46,24 +50,15 @@ const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
     const emailError = emailValidator(emailIn);
     const passwordError = passwordValidator(paswordIn);
     if (emailError || passwordError) {
+      handleError();
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       return;
-    }
-    onRegisterExecute(emailIn, nombreIn, paswordIn);
+    } else {
+      onRegisterExecute(emailIn, nombreIn, paswordIn);
+      navigate('/usuarios');
+    }    
   }
-
-  // const onLoginPressed = () => {
-  //   const emailError = emailValidator(emailIn);
-  //   const passwordError = passwordValidator(paswordIn);
-  //   if (emailError || passwordError) {
-  //     setEmail({ ...email, error: emailError });
-  //     setPassword({ ...password, error: passwordError });
-  //     return;
-  //   }
-  //   onLoginExcecute();
-  // };
-
 
   let navigate = useNavigate(); 
 
@@ -81,7 +76,32 @@ const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
 
   }
 
+  const handleError = () => {
+    setOpen(true);
+  };
 
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        cerrar
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -96,17 +116,21 @@ const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
     
     registroConValidacionDatos(data.get('email'), data.get('nombre'), data.get('password'));
 
-    if (!token) {
-      //alert("Credenciales inválidas");
-    } else {
-      navigate('/usuarios');
-    }
   };
 
   const token = sessionStorage.getItem("token");
 
   return (
     <>
+
+    <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="Credenciales inválidas"
+          action={action}
+          severity="error"
+      />
         
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

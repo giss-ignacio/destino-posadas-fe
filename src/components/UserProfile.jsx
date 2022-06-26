@@ -4,6 +4,12 @@ import { BsShield, BsCurrencyDollar } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
 
 const UserProfile = ({ setUserProfile }) => {
+  
+  function handleLogout() {
+    sessionStorage.setItem("token", "");
+    window.location.reload();
+  }
+
   return (
     <div className="nav-item absolute top-16 right-10 bg-white p-8 rounded-lg w-96">
       <div className="flex justify-between items-center">
@@ -65,9 +71,10 @@ const UserProfile = ({ setUserProfile }) => {
         </div>
       </div>
       <div>
-        <button className="bg-light-blue p-2 pl-3 pr-3 text-white rounded-md mt-4 w-full">
-          Logout
+      <form onSubmit={handleLogout}>
+        <button className="bg-light-blue p-2 pl-3 pr-3 text-white rounded-md mt-4 w-full">Logout
         </button>
+      </form>
       </div>
     </div>
   );
