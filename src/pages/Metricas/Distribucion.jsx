@@ -8,7 +8,6 @@ import {
   AccumulationDataLabel,
   Inject,
 } from "@syncfusion/ej2-react-charts";
-import { pieChartData } from "../../data/dummy";
 import { useEffect, useState } from "react";
 
 const Distribucion = () => {
@@ -106,6 +105,14 @@ const Distribucion = () => {
             ></AccumulationSeriesDirective>
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
+
+        <div>
+          <br />
+          <h1>
+            Muestra la cantidad y el porcentaje de cada tipo de alojamiento de
+            Posadas.
+          </h1>
+        </div>
       </div>
     </div>
   );

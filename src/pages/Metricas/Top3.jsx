@@ -48,8 +48,7 @@ const Top3 = () => {
     const data2 = await data.json();
 
     let mostrar = data2[0];
-    console.log(mostrar.hotel1.total);
-    //seteo
+
     setPersonalHotel1(mostrar.hotel1.personal);
     setLimpiezaHotel1(mostrar.hotel1.limpieza);
     setPrecioCalidadHotel1(mostrar.hotel1.precioCalidad);
@@ -126,7 +125,7 @@ const Top3 = () => {
           }}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
-          title="Top 3 - Mejores Hoteles"
+          title="Top 3 - Mejores Alojamientos"
         >
           <Inject
             services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}
@@ -221,6 +220,14 @@ const Top3 = () => {
             ></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
+
+        <div>
+          <br />
+          <h1>
+            Detalla el puntaje de cada una de las categorías de los tres mejores
+            alojamientos de Posadas.
+          </h1>
+        </div>
       </div>
     </div>
   );

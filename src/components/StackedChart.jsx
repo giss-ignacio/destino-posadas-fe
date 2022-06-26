@@ -10,7 +10,7 @@ import {
   Tooltip,
   DataLabel,
 } from "@syncfusion/ej2-react-charts";
-import { stackedChartData } from "../data/dummy";
+import { stackedChartData } from "../data/Estructura";
 import { useEffect, useState } from "react";
 
 const StackedChart = () => {
@@ -33,8 +33,6 @@ const StackedChart = () => {
     );
     const data2 = await data.json();
 
-    let mostrar = data2[0];
-    console.log(mostrar);
 
     setPersonal(data2.personal);
     setLimpieza(data2.limpieza);

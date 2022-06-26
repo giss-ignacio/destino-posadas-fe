@@ -18,7 +18,7 @@ import { getUsers } from "../usersApi";
 
 
 const Usuarios = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
-  
+
   const [usersData, setUsersData] = useState([]);
 
   let selectionsettings = { persistSelection: true };
@@ -49,6 +49,7 @@ const Usuarios = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
   useEffect(() => {
     setActiveMenu(true);
     setActiveNavBar(true);
+    setUsersData([]);
 
     obtenerDatos();
   }, []);
@@ -65,15 +66,12 @@ const Usuarios = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
               UserEmail: user.email,
               UserImage:
                 "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
-              ProjectName: "Hosting Press HTML",
               Role: user.rol,
               Status: "Active",
-              Weeks: "40",
-              Budget: "$2.4k",
             })
 
         console.log(usersData);
-        setUsersData([...usersData, ...modUsersData]);
+        setUsersData(modUsersData);
       })
     })
       .catch((e) => {

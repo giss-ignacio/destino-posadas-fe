@@ -118,6 +118,15 @@ const Promedio = () => {
             ></RangeColorSettingDirective>
           </RangeColorSettingsDirective>
         </ChartComponent>
+
+        <div>
+          <br />
+          <h1>
+            Muestra el promedio general de todos los alojamientos de Posadas,
+            dispuesto por cada tipo de categoría, entre ellas Personal,
+            Limpieza, Precio/calidad, Ubicación, Wi-fi, Total.
+          </h1>
+        </div>
       </div>
     </div>
   );

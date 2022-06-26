@@ -11,14 +11,14 @@ import Usuarios from "./pages/Usuarios";
 import Tareas from "./pages/Tareas";
 
 import "./App.css";
-import Total from "./pages/Metricas/Total";
+import EvolucionPuntajes from "./pages/Metricas/Evolucion Puntajes";
 import Wifi from "./pages/Metricas/Wifi";
 import Top3 from "./pages/Metricas/Top3";
 import Distribucion from "./pages/Metricas/Distribucion";
-import EvolucionPrecios from "./pages/Metricas/EvolucionPrecios";
+import EvolucionPrecios from "./pages/Metricas/Evolucion Precios";
 import Promedio from "./pages/Metricas/Promedio";
 import Editor from "./pages/Editor";
-
+import EvolucionUbicacion from "./pages/Metricas/Evolucion Ubicacion";
 const App = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [activeNavBar, setActiveNavBar] = useState(true);
@@ -56,21 +56,33 @@ const App = () => {
               <Route path="/" element={ navigateWithLogin(<Home />) } />
 
               <Route path="/login" element={<SignIn activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar} />} />
-              {/* <Route path="/registro" element={token ? ( <Navigate to="/resumen"/>) : (<Register activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />) } /> */}
 
               <Route path="/registro" element={navigateWithLogin(<Register activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
-              <Route path="/resumen" element={navigateWithLogin(<Home />)} />
-              <Route path="/calendario" element={ navigateWithLogin(<Calendario/>)} />
-              <Route path="/usuarios" element={ navigateWithLogin(<Usuarios activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
-              <Route path="/tareas" element={ navigateWithLogin(<Tareas />)} />
-              <Route path="/editor" element={ navigateWithLogin(<Editor />)} />
 
-              <Route path="/total" element={ navigateWithLogin(<Total />)} />
-              <Route path="/Distribucion" element={ navigateWithLogin(<Distribucion />)} />
-              <Route path="/top%203" element={ navigateWithLogin(<Top3 />)} />
-              <Route path="/Wifi" element={ navigateWithLogin(<Wifi />)} />
-              <Route path="/evolucionPrecios" element={ navigateWithLogin(<EvolucionPrecios />)} />
-              <Route path="/promedio" element={ navigateWithLogin(<Promedio />)} />
+              <Route path="/resumen" element={navigateWithLogin(<Home />)} />
+              
+              <Route path="/calendario" element={navigateWithLogin(<Calendario />)} />
+
+              <Route path="/usuarios" element={ navigateWithLogin(<Usuarios activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
+
+              <Route
+                path="/Evolucion%20puntajes"
+                element={navigateWithLogin(<EvolucionPuntajes />)}
+              />
+
+              <Route path="/Distribucion" element={navigateWithLogin(<Distribucion />) } />
+              <Route path="/top%203" element={navigateWithLogin(<Top3 />) } />
+              <Route path="/Wifi" element={navigateWithLogin(<Wifi />) } />
+              <Route
+                path="/Evolucion%20Precios"
+                element={navigateWithLogin(<EvolucionPrecios />) }
+              />
+              <Route
+                path="/Evolucion%20Ubicacion"
+                element={navigateWithLogin(<EvolucionUbicacion />) }
+              />
+              <Route path="/promedio" element={navigateWithLogin(<Promedio />) } />
+
             </Routes>
           </div>
         </div>
