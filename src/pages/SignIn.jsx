@@ -79,8 +79,6 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
       });
   }
 
-  
-
   const handleError = () => {
     setOpen(true);
   };
