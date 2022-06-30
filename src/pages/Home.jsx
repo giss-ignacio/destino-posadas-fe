@@ -6,6 +6,7 @@ import { FiBarChart } from "react-icons/fi";
 import { HiOutlineRefresh } from "react-icons/hi";
 import StackedChart from "../components/StackedChart";
 import { useEffect, useState } from "react";
+import Moment from "moment";
 
 const Home = () => {
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
@@ -55,9 +56,18 @@ const Home = () => {
     setDolarOficial(objCotizaciones.oficial.value_avg);
     setEuro(objCotizaciones.oficial_euro.value_avg);
     setEuroOficial(objCotizaciones.blue_euro.value_avg);
+
+    //fecha
+    const fechaBd = await fetch("http://localhost:3009/api/fedata/fecha");
+    const objFechaBd = await fechaBd.json();
+    console.log(objFechaBd[0][0].fecha);
+    // const test = objFechaBd[0][0].fecha;
+    // console.log(Moment());
+    // setFecha(formatDate);
+    setFecha(objFechaBd[0][0].fecha);
   };
 
-  const cons = () => {
+  const subirData = () => {
     var requestOptions = {
       method: "POST",
       redirect: "follow",
@@ -129,7 +139,7 @@ const Home = () => {
                     "/" +
                     new Date().getFullYear()
                 ),
-                cons(),
+                subirData(),
               ]}
               className="text-2xl text-icon-light-green bg-icon-light-green opacity-0.9 rounded-full  p-4"
             >
