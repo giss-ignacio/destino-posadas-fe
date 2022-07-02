@@ -22,8 +22,8 @@ import EvolucionUbicacion from "./pages/Metricas/Evolucion Ubicacion";
 import jwt_decode from "jwt-decode";
 
 const App = () => {
-  const [activeMenu, setActiveMenu] = useState(true);
-  const [activeNavBar, setActiveNavBar] = useState(true);
+  const [activeMenu, setActiveMenu] = useState(false);
+  const [activeNavBar, setActiveNavBar] = useState(false);
   const token = sessionStorage.getItem("token");
 
   function navigateWithLogin(component) {

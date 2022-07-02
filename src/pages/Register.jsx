@@ -63,8 +63,6 @@ const Register = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
   let navigate = useNavigate(); 
 
   async function onRegisterExecute(emailIn, nombreIn, paswordIn) {
-    setActiveNavBar(true);
-    setActiveMenu(true);
     return register(emailIn, nombreIn, paswordIn)
       .then((jsonResp) => {
         // token

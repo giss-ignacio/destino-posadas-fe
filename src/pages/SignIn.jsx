@@ -71,9 +71,7 @@ const SignIn = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) => {
         sessionStorage.setItem("rol", jsonResp.user.rol);
         sessionStorage.setItem("email", emailIn);
         sessionStorage.setItem("nombre", emailIn.split("@")[0]); // modificar el backend para devolver el nombre
-        
-        setActiveNavBar(true);
-        setActiveMenu(true);
+
         navigate("/resumen");
       })
       .catch((e) => {
