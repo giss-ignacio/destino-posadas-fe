@@ -24,6 +24,7 @@ const Home = () => {
   const [euro, setEuro] = useState([]);
   const [euroOficial, setEuroOficial] = useState([]);
   const [fecha, setFecha] = useState([]);
+  const [cantServicios, setCantServicios] = useState([0]);
 
   useEffect(() => {
     obtenerDatos();
@@ -73,11 +74,17 @@ const Home = () => {
       `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/fecha`
     );
     const objFechaBd = await fechaBd.json();
-    console.log(objFechaBd[0][0].fecha);
-    // const test = objFechaBd[0][0].fecha;
-    // console.log(Moment());
-    // setFecha(formatDate);
     setFecha(objFechaBd[0][0].fecha);
+
+    //cantidad de servicios
+
+    const cantServ = await fetch(
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/promedioPosadas`
+    );
+    const objProm = await cantServ.json();
+    if (objProm.personal != null) {
+      setCantServicios(Object.keys(objProm).length);
+    }
   };
 
   const subirData = () => {
@@ -145,7 +152,7 @@ const Home = () => {
               <FiBarChart />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">6</span>
+              <span className="text-lg font-semibold">{cantServicios}</span>
             </p>
             <p className="text-sm text-gray-500 mt-1">
               Cantidad de servicios analizados
