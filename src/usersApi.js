@@ -1,4 +1,6 @@
-const url = "http://localhost:3009/api";
+// const url = "http://192.168.0.10:3009/api";
+const url = `http://${process.env.REACT_APP_IPLOCAL}:3009/api`;
+
 const usersRoute = "users";
 
 async function sendRequest(url, method, body) {
@@ -19,7 +21,6 @@ async function sendRequest(url, method, body) {
     return resp.json();
   });
 }
-
 
 export async function login(email, password) {
   let body = { email: email, password: password };

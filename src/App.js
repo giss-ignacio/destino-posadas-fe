@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -31,12 +37,13 @@ const App = () => {
     let isExpired = true;
 
     if (token) {
-      isExpired = jwt_decode(token) * 1000 < currentDate.getTime() ;
-    }     
+      isExpired = jwt_decode(token) * 1000 < currentDate.getTime();
+    }
 
     let isValidToken = token && !isExpired;
 
-    return  isValidToken ? (component):( <Navigate to="/login"/>)
+    // return  isValidToken ? (component):( <Navigate to="/login"/>)
+    return component;
   }
 
   return (
@@ -59,41 +66,80 @@ const App = () => {
           }
         >
           <div className="fixed md:static bg-main-bg navbar w-full ">
-            {activeNavBar && <Navbar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />}
+            {activeNavBar && (
+              <Navbar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+            )}
           </div>
           <div>
             <Routes>
+              <Route path="/" element={navigateWithLogin(<Home />)} />
 
-              <Route path="/" element={ navigateWithLogin(<Home />) } />
+              <Route
+                path="/login"
+                element={
+                  <SignIn
+                    activeMenu={activeMenu}
+                    setActiveMenu={setActiveMenu}
+                    activeNavBar={activeNavBar}
+                    setActiveNavBar={setActiveNavBar}
+                  />
+                }
+              />
 
-              <Route path="/login" element={<SignIn activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar} />} />
-
-              <Route path="/registro" element={navigateWithLogin(<Register activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
+              <Route
+                path="/registro"
+                element={navigateWithLogin(
+                  <Register
+                    activeMenu={activeMenu}
+                    setActiveMenu={setActiveMenu}
+                    activeNavBar={activeNavBar}
+                    setActiveNavBar={setActiveNavBar}
+                  />
+                )}
+              />
 
               <Route path="/resumen" element={navigateWithLogin(<Home />)} />
-              
-              <Route path="/calendario" element={navigateWithLogin(<Calendario />)} />
 
-              <Route path="/usuarios" element={ navigateWithLogin(<Usuarios activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeNavBar={activeNavBar} setActiveNavBar={setActiveNavBar}  />)} />
+              <Route
+                path="/calendario"
+                element={navigateWithLogin(<Calendario />)}
+              />
+
+              <Route
+                path="/usuarios"
+                element={navigateWithLogin(
+                  <Usuarios
+                    activeMenu={activeMenu}
+                    setActiveMenu={setActiveMenu}
+                    activeNavBar={activeNavBar}
+                    setActiveNavBar={setActiveNavBar}
+                  />
+                )}
+              />
 
               <Route
                 path="/Evolucion%20puntajes"
                 element={navigateWithLogin(<EvolucionPuntajes />)}
               />
 
-              <Route path="/Distribucion" element={navigateWithLogin(<Distribucion />) } />
-              <Route path="/top%203" element={navigateWithLogin(<Top3 />) } />
-              <Route path="/Wifi" element={navigateWithLogin(<Wifi />) } />
+              <Route
+                path="/Distribucion"
+                element={navigateWithLogin(<Distribucion />)}
+              />
+              <Route path="/top%203" element={navigateWithLogin(<Top3 />)} />
+              <Route path="/Wifi" element={navigateWithLogin(<Wifi />)} />
               <Route
                 path="/Evolucion%20Precios"
-                element={navigateWithLogin(<EvolucionPrecios />) }
+                element={navigateWithLogin(<EvolucionPrecios />)}
               />
               <Route
                 path="/Evolucion%20Ubicacion"
-                element={navigateWithLogin(<EvolucionUbicacion />) }
+                element={navigateWithLogin(<EvolucionUbicacion />)}
               />
-              <Route path="/promedio" element={navigateWithLogin(<Promedio />) } />
-
+              <Route
+                path="/promedio"
+                element={navigateWithLogin(<Promedio />)}
+              />
             </Routes>
           </div>
         </div>

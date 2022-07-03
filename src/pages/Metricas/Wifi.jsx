@@ -36,7 +36,8 @@ const Wifi = () => {
 
   const obtenerDatos = async () => {
     const data = await fetch(
-      "http://localhost:3009/api/fedata/evolucionMensualPorConcepto?concepto=WiFi"
+      // "http://192.168.0.10:3009/api/fedata/evolucionMensualPorConcepto?concepto=WiFi"
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/evolucionMensualPorConcepto?concepto=WiFi`
     );
     const data2 = await data.json();
     let obj = data2[0];
