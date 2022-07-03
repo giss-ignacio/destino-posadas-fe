@@ -47,8 +47,7 @@ const Usuarios = ({activeMenu, setActiveMenu, activeNavBar, setActiveNavBar}) =>
   }
 
   useEffect(() => {
-    setActiveMenu(true);
-    setActiveNavBar(true);
+
     setUsersData([]);
 
     obtenerDatos();

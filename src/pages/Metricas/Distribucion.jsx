@@ -28,7 +28,8 @@ const Distribucion = () => {
 
   const obtenerDatos = async () => {
     const data = await fetch(
-      "http://localhost:3009/api/fedata/distribucionAlojamientos"
+      // "http://192.168.0.10:3009/api/fedata/distribucionAlojamientos"
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/distribucionAlojamientos`
     );
     const data2 = await data.json();
     let mostrar = data2[0];

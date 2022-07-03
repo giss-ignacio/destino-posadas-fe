@@ -9,6 +9,13 @@ import { useEffect, useState } from "react";
 import Moment from "moment";
 
 const Home = () => {
+  // const uri = "PORT ES " + process.env.PORT;
+  // console.log(uri);
+  // console.log(process.env.REACT_APP_IPLOCAL);
+  // console.log(
+  //   `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/promedioNoche`
+  // );
+
   const [promedioPorNoche, setPromedioPorNoche] = useState([]);
   const [totalOpiniones, setTotalOpiniones] = useState([]);
   const [cantidadAlojamientos, setCantidadAlojamientos] = useState([]);
@@ -16,29 +23,32 @@ const Home = () => {
   const [dolarOficial, setDolarOficial] = useState([]);
   const [euro, setEuro] = useState([]);
   const [euroOficial, setEuroOficial] = useState([]);
-
   const [fecha, setFecha] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
-  }, []);
-
+  });
   const obtenerDatos = async () => {
     //promedio por noche
-    const data = await fetch("http://localhost:3009/api/fedata/promedioNoche");
+    const data = await fetch(
+      // "http://192.168.0.10:3009/api/fedata/promedioNoche"
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/promedioNoche`
+    );
     const data2 = await data.json();
     let monto = data2[0];
     setPromedioPorNoche(monto);
     //total opiniones
     const opiniones = await fetch(
-      "http://localhost:3009/api/fedata/totalOpiniones"
+      // "http://192.168.0.10:3009/api/fedata/totalOpiniones"
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/totalOpiniones`
     );
     const opiniones2 = await opiniones.json();
     let totalOpiniones = opiniones2[0];
     setTotalOpiniones(totalOpiniones);
     //cantidad alojamientos
     const datos = await fetch(
-      "http://localhost:3009/api/fedata/distribucionAlojamientos"
+      // "http://192.168.0.10:3009/api/fedata/distribucionAlojamientos"
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/distribucionAlojamientos`
     );
     const data3 = await datos.json();
     let cantidadAlojamientos =
@@ -58,7 +68,10 @@ const Home = () => {
     setEuroOficial(objCotizaciones.blue_euro.value_avg);
 
     //fecha
-    const fechaBd = await fetch("http://localhost:3009/api/fedata/fecha");
+    // const fechaBd = await fetch("http://192.168.0.10:3009/api/fedata/fecha");
+    const fechaBd = await fetch(
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/fecha`
+    );
     const objFechaBd = await fechaBd.json();
     console.log(objFechaBd[0][0].fecha);
     // const test = objFechaBd[0][0].fecha;
@@ -73,7 +86,16 @@ const Home = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3009/api/loader/subirData", requestOptions)
+    // fetch("http://192.168.0.10:3009/api/loader/subirData", requestOptions)
+    fetch(
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/loader/subirData`,
+      requestOptions
+    )
+      // fetch(
+      //   `http://${process.env.REACT_APP_IPLOCAL}:3009/api/loader/subirData`,
+      //   requestOptions
+      // )
+      .then(() => obtenerDatos())
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

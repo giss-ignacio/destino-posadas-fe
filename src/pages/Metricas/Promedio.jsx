@@ -28,7 +28,8 @@ const Promedio = () => {
 
   const obtenerDatos = async () => {
     const data = await fetch(
-      "http://localhost:3009/api/fedata/promedioPosadas"
+      // "http://192.168.0.10:3009/api/fedata/promedioPosadas"
+      `http://${process.env.REACT_APP_IPLOCAL}:3009/api/fedata/promedioPosadas`
     );
     const data2 = await data.json();
 
