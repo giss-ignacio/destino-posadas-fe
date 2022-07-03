@@ -42,8 +42,8 @@ const App = () => {
 
     let isValidToken = token && !isExpired;
 
-    // return  isValidToken ? (component):( <Navigate to="/login"/>)
-    return component;
+    return isValidToken ? component : <Navigate to="/login" />;
+    // return component;
   }
 
   return (

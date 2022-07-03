@@ -185,9 +185,9 @@ const Home = () => {
         </div>
       </div>
       <div className="flex gap-10 flex-wrap justify-center">
-        <div className="bg-white m-3 p-4 rounded-2xl w-780 ">
-          <div className="flex justify-between">
-            <p className="font-semibold text-xl">Resumen</p>
+        <div className="bg-white m-3 p-4 rounded-2xl w-780 justify-center">
+          <div className="flex justify-center ">
+            <p className="font-semibold text-xl ">Resumen</p>
           </div>
           <div className="mt-10 flex gap-10 flex-wrap justify-center">
             <div className=" border-r-1 border-color m-4 pr-10">

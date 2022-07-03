@@ -50,15 +50,16 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
         <button
           onClick={() => setActiveMenu(!activeMenu)}
           className="text-xl text-light-blue rounded-full p-3 hover:bg-light-gray sm:hidden"
+          key={sessionStorage.getItem("_id")}
         >
           {activeMenu ? <MdOutlineCancel /> : <AiOutlineMenu />}
         </button>
-        <Button
+        {/* <Button
           state={activeMenu}
           setState={setActiveMenu}
           icon={<AiOutlineMenu />}
-        />
-        <Button state={search} setState={setSearch} icon={<FiSearch />} />
+        /> */}
+        {/* <Button state={search} setState={setSearch} icon={<FiSearch />} /> */}
       </div>
 
       <div className="flex">
@@ -83,9 +84,10 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
             <span className="text-gray-400">Hola,</span>{" "}
             <span className="text-light-blue font-bold ml-1">
               {" "}
-              {
-                sessionStorage.getItem("nombre") ?  sessionStorage.getItem("nombre").charAt(0).toUpperCase() + sessionStorage.getItem("nombre").slice(1) : "Administrador"
-              }{" "}
+              {sessionStorage.getItem("nombre")
+                ? sessionStorage.getItem("nombre").charAt(0).toUpperCase() +
+                  sessionStorage.getItem("nombre").slice(1)
+                : "Administrador"}{" "}
             </span>
           </p>
           <MdKeyboardArrowDown className="text-light-blue text-xl" />
