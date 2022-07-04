@@ -58,7 +58,6 @@ const Home = () => {
     setEuroOficial(objCotizaciones.blue_euro.value_avg);
 
     //fecha
-    // const fechaBd = await fetch("http://192.168.0.10:3009/api/fedata/fecha");
     const fechaBd = await fetch(`http://localhost:3009/api/fedata/fecha`);
     const objFechaBd = await fechaBd.json();
     setFecha(objFechaBd[0][0].fecha);
