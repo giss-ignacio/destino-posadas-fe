@@ -11,7 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { emailValidator } from "./helpers/emailValidator";
 import { passwordValidator } from "./helpers/passwordValidator";
 import { register } from "../usersApi";
@@ -112,10 +112,6 @@ const Register = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const datos = {
-      email: { value: data.get("email") },
-      password: { value: data.get("password") },
-    };
 
     setEmail(data.get("email"));
     setPassword(data.get("password"));
@@ -126,8 +122,6 @@ const Register = ({
       data.get("password")
     );
   };
-
-  const token = sessionStorage.getItem("token");
 
   return (
     <>

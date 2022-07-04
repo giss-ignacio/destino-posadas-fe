@@ -121,10 +121,6 @@ const SignIn = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const datos = {
-      email: { value: data.get("email") },
-      password: { value: data.get("password") },
-    };
 
     setEmail(data.get("email"));
     setPassword(data.get("password"));

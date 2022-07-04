@@ -10,7 +10,6 @@ import {
   Tooltip,
   DataLabel,
 } from "@syncfusion/ej2-react-charts";
-import { stackedChartData } from "../data/Estructura";
 import { useEffect, useState } from "react";
 
 const StackedChart = () => {
