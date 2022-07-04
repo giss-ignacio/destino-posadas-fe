@@ -17,10 +17,11 @@ const Home = () => {
   const [euroOficial, setEuroOficial] = useState([]);
 
   const [fecha, setFecha] = useState([]);
+  const [cantServicios, setCantServicios] = useState([0]);
 
   useEffect(() => {
     obtenerDatos();
-  }, []);
+  });
 
   const obtenerDatos = async () => {
     //promedio por noche
@@ -55,9 +56,25 @@ const Home = () => {
     setDolarOficial(objCotizaciones.oficial.value_avg);
     setEuro(objCotizaciones.oficial_euro.value_avg);
     setEuroOficial(objCotizaciones.blue_euro.value_avg);
+
+    //fecha
+    // const fechaBd = await fetch("http://192.168.0.10:3009/api/fedata/fecha");
+    const fechaBd = await fetch(`http://localhost:3009/api/fedata/fecha`);
+    const objFechaBd = await fechaBd.json();
+    setFecha(objFechaBd[0][0].fecha);
+
+    //cantidad de servicios
+
+    const cantServ = await fetch(
+      `http://localhost:3009/api/fedata/promedioPosadas`
+    );
+    const objProm = await cantServ.json();
+    if (objProm.personal != null) {
+      setCantServicios(Object.keys(objProm).length);
+    }
   };
 
-  const cons = () => {
+  const subirData = () => {
     var requestOptions = {
       method: "POST",
       redirect: "follow",
@@ -66,6 +83,7 @@ const Home = () => {
     fetch("http://localhost:3009/api/loader/subirData", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
+      .then(() => obtenerDatos())
       .catch((error) => console.log("error", error));
   };
 
@@ -113,7 +131,7 @@ const Home = () => {
               <FiBarChart />
             </button>
             <p className="mt-3">
-              <span className="text-lg font-semibold">6</span>
+              <span className="text-lg font-semibold">{cantServicios}</span>
             </p>
             <p className="text-sm text-gray-500 mt-1">
               Cantidad de servicios analizados
@@ -129,7 +147,7 @@ const Home = () => {
                     "/" +
                     new Date().getFullYear()
                 ),
-                cons(),
+                subirData(),
               ]}
               className="text-2xl text-icon-light-green bg-icon-light-green opacity-0.9 rounded-full  p-4"
             >
